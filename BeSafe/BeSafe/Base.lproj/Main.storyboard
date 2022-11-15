@@ -164,33 +164,6 @@
             </objects>
             <point key="canvasLocation" x="1763" y="391"/>
         </scene>
-        <!--Welcome View Controller-->
-        <scene sceneID="0jU-d7-upB">
-            <objects>
-                <viewController storyboardIdentifier="WelcomeViewController" title="Welcome View Controller" id="ahC-lH-fJH" customClass="WelcomeViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ipi-Fa-ffi">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENz-Qn-Sv9">
-                                <rect key="frame" x="154" y="414" width="85.333333333333314" height="24"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="EVd-Gi-buR"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="ENz-Qn-Sv9" firstAttribute="centerY" secondItem="Ipi-Fa-ffi" secondAttribute="centerY" id="H7H-ff-jK2"/>
-                            <constraint firstItem="ENz-Qn-Sv9" firstAttribute="centerX" secondItem="Ipi-Fa-ffi" secondAttribute="centerX" id="MYs-Cs-kTo"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="G67-1z-D4x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2465" y="4"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="5hC-Tx-gKo">
             <objects>
@@ -262,6 +235,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wVz-kV-ile" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="20.610687022900763" y="3.5211267605633805"/>
+        </scene>
+        <!--Welcome View Controller-->
+        <scene sceneID="jCW-ew-KJz">
+            <objects>
+                <viewController storyboardIdentifier="WelcomeVC" id="Ryd-ZO-wK0" customClass="WelcomeViewController" customModule="BeSafe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Y4b-m9-e6r">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="WzO-aa-4tp"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eMB-f2-4n1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2984" y="-348"/>
         </scene>
     </scenes>
     <resources>

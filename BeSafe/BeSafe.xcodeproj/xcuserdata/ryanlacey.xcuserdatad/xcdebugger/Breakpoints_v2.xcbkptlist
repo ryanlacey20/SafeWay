@@ -62,8 +62,8 @@
             filePath = "BeSafe/View Controllers/SignUpViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "goToWelcomeScreen()"
             landmarkType = "7">
          </BreakpointContent>

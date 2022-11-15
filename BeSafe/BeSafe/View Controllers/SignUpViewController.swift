@@ -66,11 +66,9 @@ class SignUpViewController: UIViewController {
                         if error != nil{
                             //TODO reconsider how this is handled
                             self.showErrorMessage(message: "User has been created, error saving first name and last name")
-                        }else{
-                            //Move to the app homescreen
-                            self.goToWelcomeScreen()
                         }
                     }
+                    self.goToWelcomeScreen()
 
                 }
             }
@@ -88,8 +86,8 @@ class SignUpViewController: UIViewController {
     }
     
     func goToWelcomeScreen(){
-        let welcomePageView = storyboard!.instantiateViewController(withIdentifier: "WelcomeViewController") as? WelcomeViewController
-        view.window?.rootViewController = welcomePageView
+        let welcomeViewController = storyboard?.instantiateViewController(withIdentifier: "WelcomeVC") as? WelcomeViewController
+        view.window?.rootViewController = welcomeViewController
         view.window?.makeKeyAndVisible()
     }
     
