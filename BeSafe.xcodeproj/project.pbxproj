@@ -16,6 +16,7 @@
 		9C335CC32901DC1D00CAF95E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C335CC12901DC1D00CAF95E /* LaunchScreen.storyboard */; };
 		9C335CCE2901DC1D00CAF95E /* BeSafeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C335CCD2901DC1D00CAF95E /* BeSafeTests.swift */; };
 		9C335CD92901DC1D00CAF95E /* BeSafeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C335CD82901DC1D00CAF95E /* BeSafeUITests.swift */; };
+		9C335CEE2901E86D00CAF95E /* MapPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C335CED2901E86D00CAF95E /* MapPage.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		9C335CD42901DC1D00CAF95E /* BeSafeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeSafeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C335CD82901DC1D00CAF95E /* BeSafeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeSafeUITests.swift; sourceTree = "<group>"; };
 		9C335CDA2901DC1D00CAF95E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9C335CED2901E86D00CAF95E /* MapPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MapPage.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				9C335CC12901DC1D00CAF95E /* LaunchScreen.storyboard */,
 				9C335CC42901DC1D00CAF95E /* Info.plist */,
 				9C335CBC2901DC1A00CAF95E /* BeSafe.xcdatamodeld */,
+				9C335CED2901E86D00CAF95E /* MapPage.storyboard */,
 			);
 			path = BeSafe;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C335CEE2901E86D00CAF95E /* MapPage.storyboard in Resources */,
 				9C335CC32901DC1D00CAF95E /* LaunchScreen.storyboard in Resources */,
 				9C335CC02901DC1D00CAF95E /* Assets.xcassets in Resources */,
 				9C335CBB2901DC1A00CAF95E /* Main.storyboard in Resources */,

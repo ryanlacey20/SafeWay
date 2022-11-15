@@ -2,12 +2,12 @@
 //  BeSafeUITests.swift
 //  BeSafeUITests
 //
-//  Created by Ryan Lacey on 20/10/2022.
+//  Created by Ryan Lacey on 07/11/2022.
 //
 
 import XCTest
 
-class BeSafeUITests: XCTestCase {
+final class BeSafeUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -27,12 +27,11 @@ class BeSafeUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
 
-        // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
     func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
+        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
             // This measures how long it takes to launch your application.
             measure(metrics: [XCTApplicationLaunchMetric()]) {
                 XCUIApplication().launch()
