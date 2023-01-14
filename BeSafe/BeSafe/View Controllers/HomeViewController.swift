@@ -1,27 +1,21 @@
 //
-//  SignUpViewController.swift
+//  HomeViewController.swift
 //  BeSafe
 //
-//  Created by Ryan Lacey on 12/11/2022.
+//  Created by Ryan Lacey on 15/11/2022.
 //
 
 import UIKit
-import FirebaseAuth
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
 
-    @IBAction func loginButton(_ sender: Any) {
-    }
-    @IBAction func signUpButton(_ sender: Any) {
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("hello")
+
         // Do any additional setup after loading the view.
     }
     
-    
+
     /*
     // MARK: - Navigation
 
