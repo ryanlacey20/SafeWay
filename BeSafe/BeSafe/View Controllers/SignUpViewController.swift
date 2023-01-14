@@ -86,7 +86,7 @@ class SignUpViewController: UIViewController {
     }
     
     func goToWelcomeScreen(){
-        let welcomeViewController = storyboard?.instantiateViewController(withIdentifier: "WelcomeVC") as? WelcomeViewController
+        let welcomeViewController = storyboard?.instantiateViewController(withIdentifier: "WelcomeViewController") as? WelcomeViewController
         view.window?.rootViewController = welcomeViewController
         view.window?.makeKeyAndVisible()
     }
