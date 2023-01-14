@@ -98,7 +98,7 @@ class SignUpViewController: UIViewController {
 override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        print("test shiititiititiit fucking work please")
+        print("test")
         if Auth.auth().currentUser != nil {
           // User is signed in.
             print("THE USER IS LOGGED IN !","")
