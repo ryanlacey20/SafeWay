@@ -173,10 +173,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="mRX-UL-1gZ">
-                                <rect key="frame" x="40" y="665" width="313" height="88.666666666666629"/>
+                                <rect key="frame" x="40" y="664" width="313" height="148"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ajj-8X-PIe">
-                                        <rect key="frame" x="0.0" y="0.0" width="313" height="34.333333333333336"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="313" height="64"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="fsb-dS-QmF"/>
                                         </constraints>
@@ -188,7 +188,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89J-1w-nn9">
-                                        <rect key="frame" x="0.0" y="54.333333333333371" width="313" height="34.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="84" width="313" height="64"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Sign Up"/>
                                         <connections>
@@ -216,7 +216,7 @@
                             <constraint firstItem="3DA-90-Tah" firstAttribute="top" secondItem="eso-r6-Wxj" secondAttribute="top" constant="40" id="879-8E-k2J"/>
                             <constraint firstItem="3DA-90-Tah" firstAttribute="leading" secondItem="eso-r6-Wxj" secondAttribute="leading" constant="50" id="E9m-qL-wdr"/>
                             <constraint firstItem="mRX-UL-1gZ" firstAttribute="leading" secondItem="eso-r6-Wxj" secondAttribute="leading" constant="40" id="NmD-QX-FmN"/>
-                            <constraint firstItem="mRX-UL-1gZ" firstAttribute="top" secondItem="eso-r6-Wxj" secondAttribute="top" constant="606" id="Sxf-iv-xvg"/>
+                            <constraint firstItem="mRX-UL-1gZ" firstAttribute="top" secondItem="eso-r6-Wxj" secondAttribute="top" constant="605" id="Sxf-iv-xvg"/>
                             <constraint firstItem="eso-r6-Wxj" firstAttribute="trailing" secondItem="mRX-UL-1gZ" secondAttribute="trailing" constant="40" id="c7B-mR-mj8"/>
                             <constraint firstAttribute="bottom" secondItem="mRX-UL-1gZ" secondAttribute="bottom" constant="40" id="cIX-Ou-Fh7"/>
                         </constraints>
@@ -248,34 +248,31 @@
         <!--Welcome View Controller-->
         <scene sceneID="jCW-ew-KJz">
             <objects>
-                <viewController storyboardIdentifier="WelcomeVC" id="Ryd-ZO-wK0" customClass="WelcomeViewController" customModule="BeSafe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WelcomeViewController" id="Ryd-ZO-wK0" customClass="WelcomeViewController" customModule="BeSafe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y4b-m9-e6r">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQa-49-5hD">
-                                <rect key="frame" x="40" y="309" width="313" height="48"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BeSafe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4A-IX-WZh">
+                                <rect key="frame" x="20" y="79" width="97" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qxh-zn-DZM">
-                                <rect key="frame" x="40" y="733.66666666666663" width="313" height="34.333333333333371"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Continue"/>
-                                <connections>
-                                    <segue destination="fcl-il-jkb" kind="show" id="WWV-ZP-pDH"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to BeSafe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xeb-k1-Q5f">
-                                <rect key="frame" x="40" y="409" width="313" height="59"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign up Succesful" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2L-7l-eI4">
-                                <rect key="frame" x="40" y="468" width="313" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eYg-sQ-Wsm">
+                                <rect key="frame" x="0.0" y="401" width="392" height="51"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem title="sdf" landscapeImage="firebase_28dp.png" badgeValue="Check-In" id="VDY-vR-3a7">
+                                        <color key="badgeColor" systemColor="labelColor"/>
+                                    </tabBarItem>
+                                    <tabBarItem systemItem="more" id="YaC-cp-Itp"/>
+                                </items>
+                            </tabBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yiu-de-tfk">
+                                <rect key="frame" x="373" y="79" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -283,47 +280,26 @@
                         <viewLayoutGuide key="safeArea" id="WzO-aa-4tp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="qxh-zn-DZM" firstAttribute="leading" secondItem="WzO-aa-4tp" secondAttribute="leading" constant="40" id="0Jc-zg-vrR"/>
-                            <constraint firstItem="WzO-aa-4tp" firstAttribute="bottom" secondItem="qxh-zn-DZM" secondAttribute="bottom" constant="50" id="0v0-Jn-QCw"/>
-                            <constraint firstItem="c2L-7l-eI4" firstAttribute="top" secondItem="Xeb-k1-Q5f" secondAttribute="bottom" id="1G0-gj-Mfd"/>
-                            <constraint firstItem="WzO-aa-4tp" firstAttribute="bottom" secondItem="Xeb-k1-Q5f" secondAttribute="bottom" constant="350" id="5jB-A8-aOY"/>
-                            <constraint firstItem="WzO-aa-4tp" firstAttribute="trailing" secondItem="vQa-49-5hD" secondAttribute="trailing" constant="40" id="CNd-ex-b5h"/>
-                            <constraint firstItem="WzO-aa-4tp" firstAttribute="trailing" secondItem="c2L-7l-eI4" secondAttribute="trailing" constant="40" id="HAM-yS-IB6"/>
-                            <constraint firstItem="Xeb-k1-Q5f" firstAttribute="top" secondItem="WzO-aa-4tp" secondAttribute="top" constant="350" id="Mfs-Wj-ktz"/>
-                            <constraint firstItem="c2L-7l-eI4" firstAttribute="leading" secondItem="WzO-aa-4tp" secondAttribute="leading" constant="40" id="P80-Ky-Ni7"/>
-                            <constraint firstItem="WzO-aa-4tp" firstAttribute="trailing" secondItem="Xeb-k1-Q5f" secondAttribute="trailing" constant="40" id="Pfa-rO-voR"/>
-                            <constraint firstItem="vQa-49-5hD" firstAttribute="top" secondItem="WzO-aa-4tp" secondAttribute="top" constant="250" id="X9m-t1-CFu"/>
-                            <constraint firstItem="WzO-aa-4tp" firstAttribute="trailing" secondItem="qxh-zn-DZM" secondAttribute="trailing" constant="40" id="c7X-7d-XXL"/>
-                            <constraint firstItem="vQa-49-5hD" firstAttribute="leading" secondItem="WzO-aa-4tp" secondAttribute="leading" constant="40" id="t4K-BG-BDx"/>
-                            <constraint firstItem="Xeb-k1-Q5f" firstAttribute="leading" secondItem="WzO-aa-4tp" secondAttribute="leading" constant="40" id="tjd-gk-Qet"/>
+                            <constraint firstItem="WzO-aa-4tp" firstAttribute="trailing" secondItem="Yiu-de-tfk" secondAttribute="trailing" constant="20" id="3Kr-lW-bpW"/>
+                            <constraint firstItem="u4A-IX-WZh" firstAttribute="top" secondItem="WzO-aa-4tp" secondAttribute="top" constant="20" id="ekB-L6-w7b"/>
+                            <constraint firstItem="u4A-IX-WZh" firstAttribute="leading" secondItem="WzO-aa-4tp" secondAttribute="leading" constant="20" id="hSN-sZ-dl9"/>
+                            <constraint firstItem="Yiu-de-tfk" firstAttribute="top" secondItem="WzO-aa-4tp" secondAttribute="top" constant="20" id="vJU-JF-SBx"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="welcomeText" destination="vQa-49-5hD" id="830-uH-Cbz"/>
+                        <outlet property="nameLabel" destination="Yiu-de-tfk" id="08t-bH-Rmr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eMB-f2-4n1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2799" y="-396"/>
-        </scene>
-        <!--Home View-->
-        <scene sceneID="zM9-qh-Nav">
-            <objects>
-                <viewController title="Home View" id="fcl-il-jkb" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="4Ye-Aa-HrQ">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="2A2-7S-uLn"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="dgz-xI-rDz"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lCf-xY-CpZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3857" y="-35"/>
+            <point key="canvasLocation" x="2797.709923664122" y="-396.47887323943667"/>
         </scene>
     </scenes>
     <resources>
+        <image name="firebase_28dp.png" width="56" height="56"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

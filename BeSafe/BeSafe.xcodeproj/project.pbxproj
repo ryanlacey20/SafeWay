@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C01EEBF29241CC90056E1E6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C01EEBE29241CC90056E1E6 /* HomeViewController.swift */; };
 		9C5F6E0D29217B43005097BB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5F6E0C29217B43005097BB /* Constants.swift */; };
 		9CB92BD729205BFD007ABF1B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CB92BD629205BFD007ABF1B /* GoogleService-Info.plist */; };
 		9CC01268292037A3004AE0F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC01267292037A3004AE0F3 /* ViewController.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9C01EEBE29241CC90056E1E6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9C5F6E0C29217B43005097BB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9CB92BD629205BFD007ABF1B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9CC01267292037A3004AE0F3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				9CE9DDFD291983A0004163B2 /* SignUpViewController.swift */,
 				9CC01269292037CA004AE0F3 /* LoginViewController.swift */,
 				9CC0126B292037DB004AE0F3 /* WelcomeViewController.swift */,
+				9C01EEBE29241CC90056E1E6 /* HomeViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				9CC0126A292037CA004AE0F3 /* LoginViewController.swift in Sources */,
 				9CE9DDFA291983A0004163B2 /* AppDelegate.swift in Sources */,
 				9CE9DDFC291983A0004163B2 /* SceneDelegate.swift in Sources */,
+				9C01EEBF29241CC90056E1E6 /* HomeViewController.swift in Sources */,
 				9CC0126C292037DB004AE0F3 /* WelcomeViewController.swift in Sources */,
 				9CF92FB929213DF1009B7224 /* Utilities.swift in Sources */,
 				9CC01268292037A3004AE0F3 /* ViewController.swift in Sources */,
@@ -516,6 +520,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -544,6 +549,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
