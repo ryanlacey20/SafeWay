@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -259,17 +260,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eYg-sQ-Wsm">
-                                <rect key="frame" x="-1" y="399" width="390" height="52"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <tabBarItem title="sdf" landscapeImage="firebase_28dp.png" badgeValue="Check-In" id="VDY-vR-3a7">
-                                        <color key="badgeColor" systemColor="labelColor"/>
-                                    </tabBarItem>
-                                    <tabBarItem systemItem="more" id="YaC-cp-Itp"/>
-                                </items>
-                            </tabBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yiu-de-tfk">
                                 <rect key="frame" x="373" y="79" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
@@ -284,14 +274,27 @@
                                     <action selector="logOutButtonClicked:" destination="Ryd-ZO-wK0" eventType="touchUpInside" id="k6X-TV-ObY"/>
                                 </connections>
                             </button>
+                            <tabBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYg-sQ-Wsm">
+                                <rect key="frame" x="0.0" y="749" width="393" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem title="Check-in" image="person.fill.checkmark" catalog="system" landscapeImage="person.fill.checkmark" id="VDY-vR-3a7">
+                                        <color key="badgeColor" name="AccentColor"/>
+                                    </tabBarItem>
+                                    <tabBarItem systemItem="more" id="YaC-cp-Itp"/>
+                                </items>
+                            </tabBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WzO-aa-4tp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="eYg-sQ-Wsm" firstAttribute="trailing" secondItem="WzO-aa-4tp" secondAttribute="trailing" id="2SD-FB-6cg"/>
                             <constraint firstItem="WzO-aa-4tp" firstAttribute="trailing" secondItem="Yiu-de-tfk" secondAttribute="trailing" constant="20" id="3Kr-lW-bpW"/>
                             <constraint firstItem="OaL-1s-WVU" firstAttribute="leading" secondItem="WzO-aa-4tp" secondAttribute="leading" constant="20" id="Pyy-pY-07W"/>
+                            <constraint firstItem="eYg-sQ-Wsm" firstAttribute="leading" secondItem="WzO-aa-4tp" secondAttribute="leading" id="eAf-Wt-PH1"/>
                             <constraint firstItem="u4A-IX-WZh" firstAttribute="top" secondItem="WzO-aa-4tp" secondAttribute="top" constant="20" id="ekB-L6-w7b"/>
                             <constraint firstItem="u4A-IX-WZh" firstAttribute="leading" secondItem="WzO-aa-4tp" secondAttribute="leading" constant="20" id="hSN-sZ-dl9"/>
+                            <constraint firstItem="WzO-aa-4tp" firstAttribute="bottom" secondItem="eYg-sQ-Wsm" secondAttribute="bottom" constant="20" id="rsy-hv-4CS"/>
                             <constraint firstItem="OaL-1s-WVU" firstAttribute="top" secondItem="u4A-IX-WZh" secondAttribute="bottom" constant="20" id="rzf-WI-D0D"/>
                             <constraint firstItem="Yiu-de-tfk" firstAttribute="top" secondItem="WzO-aa-4tp" secondAttribute="top" constant="20" id="vJU-JF-SBx"/>
                         </constraints>
@@ -306,10 +309,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="firebase_28dp.png" width="56" height="56"/>
-        <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <image name="person.fill.checkmark" catalog="system" width="128" height="89"/>
+        <namedColor name="AccentColor">
+            <color red="1" green="0.79199999570846558" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

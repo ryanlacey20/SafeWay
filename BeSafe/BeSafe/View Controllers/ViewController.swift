@@ -27,6 +27,7 @@ class ViewController: UIViewController {
         if Auth.auth().currentUser != nil {
           // User is signed in.
             print("USER IS LOGGED IN CUNT")
+            print(Auth.auth().currentUser!.uid)
             self.goToWelcomeScreen()
         } else {
           // No user is signed in.
