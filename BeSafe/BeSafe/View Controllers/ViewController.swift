@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBAction func signUpButton(_ sender: Any) {
     }
     
+    
     func goToWelcomeScreen(){
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "WelcomeViewController") as! WelcomeViewController
@@ -26,8 +27,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         if Auth.auth().currentUser != nil {
           // User is signed in.
-            print("USER IS LOGGED IN CUNT")
-            print(Auth.auth().currentUser!.uid)
+            print("USER IS LOGGED IN CUNT ")
             self.goToWelcomeScreen()
         } else {
           // No user is signed in.

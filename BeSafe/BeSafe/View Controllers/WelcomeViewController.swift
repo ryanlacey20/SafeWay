@@ -7,8 +7,14 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
 
 class WelcomeViewController: UIViewController {
+
+    
+    
+    
+
     
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -23,7 +29,24 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.nameLabel.text = "Welcome " + "Ryan"
+        let db = FirebaseFirestore.Firestore.firestore()
+        let docRef = db.collection("users").document(Auth.auth().currentUser!.uid)
+
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                print("Document data: \(dataDescription)")
+                let fName = (document.data()!["first_name"])
+                if let fName = fName{
+                    self.nameLabel.text = "Welcome \(fName)"
+                }
+            } else {
+                print("Document does not exist")
+            }
+        }
+
+        
+        
     }
     
 }
