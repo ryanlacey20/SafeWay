@@ -35,7 +35,7 @@ class LoginViewController: UIViewController {
         errorLabel.alpha = 0;
     }
     func backToHome(){
-        let WelcomeViewController = storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.welcomePage) as? WelcomeViewController
+        let WelcomeViewController = storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.welcomePage) as? UITabBarController
         view.window?.rootViewController = WelcomeViewController
         view.window?.makeKeyAndVisible()
     }
