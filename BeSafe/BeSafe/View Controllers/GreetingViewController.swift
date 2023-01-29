@@ -1,5 +1,5 @@
 //
-//  SignUpViewController.swift
+//  GreetingViewController.swift
 //  BeSafe
 //
 //  Created by Ryan Lacey on 12/11/2022.
@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseAuth
 
-class ViewController: UIViewController {
+class GreetingViewController: UIViewController {
 
     @IBAction func loginButton(_ sender: Any) {
     }
@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     
     func goToWelcomeScreen(){
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "WelcomeViewController") as! WelcomeViewController
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
         self.show(nextViewController, sender: self)
     }
     
@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         if Auth.auth().currentUser != nil {
           // User is signed in.
-            print("USER IS LOGGED IN CUNT ")
+            print("USER IS LOGGED IN ")
             self.goToWelcomeScreen()
         } else {
           // No user is signed in.

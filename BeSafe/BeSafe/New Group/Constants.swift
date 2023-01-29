@@ -9,7 +9,7 @@ import Foundation
 
 struct Constants {
     struct Storyboard{
-        static let welcomePage = "WelcomeViewController"
+        static let welcomePage = "TabBarController"
     }
     
 }
