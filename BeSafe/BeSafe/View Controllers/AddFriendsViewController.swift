@@ -16,13 +16,25 @@ class ResultsController: UIViewController {
 
 class AddFriendsViewController : UIViewController, UISearchResultsUpdating {
     
+    let db = Firestore.firestore()
     
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    @IBOutlet weak var usernameLabel: UILabel!
+    
+    @IBOutlet weak var followUserbutton: UIButton!
+    
+    @IBAction func onFollowButtonPress(_ sender: Any) {
+    }
     
     let searchController = UISearchController(searchResultsController: ResultsController())
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Friends"
+        self.followUserbutton.isHidden = true
+        usernameLabel.text = ""
+        nameLabel.text = ""
         
         navigationItem.searchController = searchController
         searchController.searchResultsUpdater = self
@@ -33,19 +45,28 @@ class AddFriendsViewController : UIViewController, UISearchResultsUpdating {
             print("went down the else route there was a problem")
             return
         }
-//        let db = FirebaseFirestore.Firestore.firestore()
-//        let docRef = db.collection("users").whereField("email", isEqualTo: Auth.auth().currentUser!.uid).getDocuments() { (querySnapshot, err) in
-//            if let err = err {
-//                print("Error getting documents: \(err)")
-//            } else {
-//                for document in querySnapshot!.documents {
-//                    print("\(document.documentID) => \(document.data()["first_name"] ?? "blank")")
-//                    self.nameLabel.text = ("Welcome \(document.data()["first_name"] ?? "blank")")
-//                }
-//            }
-//    }
+        
+        db.collection("users").whereField("username", isEqualTo: text)
+            .getDocuments { (querySnapshot, error) in
+                if let error = error {
+                    print("Error getting documents: \(error)")
+                } else {
+                    if let document = querySnapshot?.documents.first {
+                        let fname = document.get("first_name") as! String
+                        let lname = document.get("last_name") as! String
+                        let username = document.get("username") as! String
+                        print("Field 'fname' value is: \(fname)")
+                        self.nameLabel.text = "\(fname) \(lname)"
+                        self.usernameLabel.text = "\(username)"
+                        self.followUserbutton.isHidden = false
+                        self.followUserbutton.setTitle("follow user", for: .normal)
+                    } else {
+                        print("Document with uname 'uname' not found.")
+                        self.followUserbutton.isHidden = true
+                    }
+                }
+        }
 
-      
 //        let vc = searchController.searchResultsController as? ResultsController
 //        vc?.view.backgroundColor = .yellow
         print(text)

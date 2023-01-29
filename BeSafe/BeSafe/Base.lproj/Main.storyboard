@@ -325,21 +325,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Kg5-uu-1aA">
-                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XcX-15-9jr">
+                                <rect key="frame" x="40" y="143" width="90" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuI-mW-Jti">
+                                <rect key="frame" x="40" y="225" width="149" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nLi-yh-MPC">
+                                <rect key="frame" x="229" y="225" width="75" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <connections>
+                                    <action selector="onFollowButtonPress:" destination="dDU-fk-hZC" eventType="touchUpInside" id="n1L-Om-NB7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cXI-rC-JZR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="cXI-rC-JZR" firstAttribute="trailing" secondItem="Kg5-uu-1aA" secondAttribute="trailing" id="4PK-Xi-Nme"/>
-                            <constraint firstItem="Kg5-uu-1aA" firstAttribute="leading" secondItem="cXI-rC-JZR" secondAttribute="leading" id="C2Y-Ew-8w1"/>
-                            <constraint firstItem="cXI-rC-JZR" firstAttribute="bottom" secondItem="Kg5-uu-1aA" secondAttribute="bottom" id="LhK-Yl-IJ0"/>
-                            <constraint firstItem="Kg5-uu-1aA" firstAttribute="top" secondItem="cXI-rC-JZR" secondAttribute="top" id="QmJ-fV-Sj2"/>
+                            <constraint firstItem="vuI-mW-Jti" firstAttribute="leading" secondItem="cXI-rC-JZR" secondAttribute="leading" constant="40" id="0Wr-9j-vSE"/>
+                            <constraint firstItem="nLi-yh-MPC" firstAttribute="top" secondItem="XcX-15-9jr" secondAttribute="bottom" constant="40" id="733-rl-Ku6"/>
+                            <constraint firstItem="XcX-15-9jr" firstAttribute="top" secondItem="cXI-rC-JZR" secondAttribute="top" constant="40" id="Js5-pu-ofw"/>
+                            <constraint firstItem="nLi-yh-MPC" firstAttribute="leading" secondItem="vuI-mW-Jti" secondAttribute="trailing" constant="40" id="XCw-ED-bZp"/>
+                            <constraint firstItem="vuI-mW-Jti" firstAttribute="top" secondItem="XcX-15-9jr" secondAttribute="bottom" constant="40" id="a2J-R3-uMH"/>
+                            <constraint firstItem="XcX-15-9jr" firstAttribute="leading" secondItem="cXI-rC-JZR" secondAttribute="leading" constant="40" id="aEH-oE-C5K"/>
+                            <constraint firstItem="nLi-yh-MPC" firstAttribute="height" secondItem="vuI-mW-Jti" secondAttribute="height" multiplier="0.833333" id="h3e-rs-O2T"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="BXr-go-Rph"/>
+                    <connections>
+                        <outlet property="followUserbutton" destination="nLi-yh-MPC" id="rBp-sr-N3f"/>
+                        <outlet property="nameLabel" destination="XcX-15-9jr" id="hO6-Vt-UhF"/>
+                        <outlet property="usernameLabel" destination="vuI-mW-Jti" id="b0n-AE-Rsj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tqN-p6-hcb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
