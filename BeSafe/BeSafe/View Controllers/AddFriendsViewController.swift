@@ -16,7 +16,7 @@ class ResultsController: UIViewController {
 
 class AddFriendsViewController : UIViewController, UISearchResultsUpdating {
     
-    let db = Firestore.firestore()
+    let db = FirebaseFirestore.Firestore.firestore()
     
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -24,21 +24,27 @@ class AddFriendsViewController : UIViewController, UISearchResultsUpdating {
     
     @IBOutlet weak var followUserbutton: UIButton!
     
-    @IBAction func onFollowButtonPress(_ sender: Any) {
+    @IBAction func onFollowPress(_ sender: Any) {
+        print("pressed here")
     }
     
+    
     let searchController = UISearchController(searchResultsController: ResultsController())
+    
+    var nameText = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchController.obscuresBackgroundDuringPresentation = false
         title = "Friends"
-        self.followUserbutton.isHidden = true
         usernameLabel.text = ""
         nameLabel.text = ""
         
         navigationItem.searchController = searchController
         searchController.searchResultsUpdater = self
     }
+    
+    
     
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else {
@@ -58,11 +64,14 @@ class AddFriendsViewController : UIViewController, UISearchResultsUpdating {
                         print("Field 'fname' value is: \(fname)")
                         self.nameLabel.text = "\(fname) \(lname)"
                         self.usernameLabel.text = "\(username)"
-                        self.followUserbutton.isHidden = false
                         self.followUserbutton.setTitle("follow user", for: .normal)
+                        self.nameText = text
+                        searchController.isActive = false
+                        
                     } else {
                         print("Document with uname 'uname' not found.")
-                        self.followUserbutton.isHidden = true
+                        self.nameLabel.text = ""
+                        self.usernameLabel.text = ""
                     }
                 }
         }
@@ -71,5 +80,4 @@ class AddFriendsViewController : UIViewController, UISearchResultsUpdating {
 //        vc?.view.backgroundColor = .yellow
         print(text)
     }
-
 }

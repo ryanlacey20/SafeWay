@@ -342,7 +342,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                 <connections>
-                                    <action selector="onFollowButtonPress:" destination="dDU-fk-hZC" eventType="touchUpInside" id="n1L-Om-NB7"/>
+                                    <action selector="onFollowPress:" destination="dDU-fk-hZC" eventType="touchUpInside" id="mWe-DU-Bcv"/>
                                 </connections>
                             </button>
                         </subviews>
