@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9C01EEBF29241CC90056E1E6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C01EEBE29241CC90056E1E6 /* HomeViewController.swift */; };
+		9C200DD229905B4E00DBB127 /* CheckinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C200DD129905B4E00DBB127 /* CheckinViewController.swift */; };
 		9C5F6E0D29217B43005097BB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5F6E0C29217B43005097BB /* Constants.swift */; };
 		9C83B5F329798AC7008CD7D4 /* GreetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83B5F229798AC1008CD7D4 /* GreetingViewController.swift */; };
 		9C83B5F529798FEF008CD7D4 /* AddFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83B5F429798FEF008CD7D4 /* AddFriendsViewController.swift */; };
@@ -52,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		9C01EEBE29241CC90056E1E6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		9C200DD129905B4E00DBB127 /* CheckinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinViewController.swift; sourceTree = "<group>"; };
 		9C5F6E0C29217B43005097BB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9C83B5F229798AC1008CD7D4 /* GreetingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingViewController.swift; sourceTree = "<group>"; };
 		9C83B5F429798FEF008CD7D4 /* AddFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendsViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				9CC01269292037CA004AE0F3 /* LoginViewController.swift */,
 				9C01EEBE29241CC90056E1E6 /* HomeViewController.swift */,
 				9C83B5F429798FEF008CD7D4 /* AddFriendsViewController.swift */,
+				9C200DD129905B4E00DBB127 /* CheckinViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				9C01EEBF29241CC90056E1E6 /* HomeViewController.swift in Sources */,
 				9C83B5F529798FEF008CD7D4 /* AddFriendsViewController.swift in Sources */,
 				9C83B5F329798AC7008CD7D4 /* GreetingViewController.swift in Sources */,
+				9C200DD229905B4E00DBB127 /* CheckinViewController.swift in Sources */,
 				9CF92FB929213DF1009B7224 /* Utilities.swift in Sources */,
 				9C5F6E0D29217B43005097BB /* Constants.swift in Sources */,
 			);
