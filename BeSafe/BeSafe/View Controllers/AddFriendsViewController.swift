@@ -9,46 +9,77 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 
-class ResultsController: UIViewController {
-    override func viewDidLoad() {
-    }
-}
-
-class AddFriendsViewController : UIViewController, UISearchResultsUpdating {
+class AddFriendsViewController : UIViewController {
     
+    let db = FirebaseFirestore.Firestore.firestore()
+    var username = ""
+    var userFoundFlag = false
     
-    
-    let searchController = UISearchController(searchResultsController: ResultsController())
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Friends"
         
-        navigationItem.searchController = searchController
-        searchController.searchResultsUpdater = self
+        FirebaseFirestore.Firestore.firestore().collection("users").whereField("uid", isEqualTo: Auth.auth().currentUser!.uid).getDocuments(){ (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    self.username = document.data()["username"] as! String
+                }
+            }
+    }
     }
     
-    func updateSearchResults(for searchController: UISearchController) {
-        guard let text = searchController.searchBar.text else {
-            print("went down the else route there was a problem")
-            return
-        }
-//        let db = FirebaseFirestore.Firestore.firestore()
-//        let docRef = db.collection("users").whereField("email", isEqualTo: Auth.auth().currentUser!.uid).getDocuments() { (querySnapshot, err) in
-//            if let err = err {
-//                print("Error getting documents: \(err)")
-//            } else {
-//                for document in querySnapshot!.documents {
-//                    print("\(document.documentID) => \(document.data()["first_name"] ?? "blank")")
-//                    self.nameLabel.text = ("Welcome \(document.data()["first_name"] ?? "blank")")
-//                }
-//            }
-//    }
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    @IBOutlet weak var usernameLabel: UILabel!
+    
+    @IBOutlet weak var followUserbutton: UIButton!
+    
+    @IBAction func searchBarEdited(_ sender: Any) {
+        print("this was triggered")
+        db.collection("users").whereField("username", isEqualTo: usernameSearch.text!)
+                   .getDocuments { (querySnapshot, error) in
+                       if let error = error {
+                           print("Error getting documents: \(error)")
+                       } else {
+                           if let document = querySnapshot?.documents.first {
+                               let fname = document.get("first_name") as! String
+                               let lname = document.get("last_name") as! String
+                               let username = document.get("username") as! String
 
-      
-//        let vc = searchController.searchResultsController as? ResultsController
-//        vc?.view.backgroundColor = .yellow
-        print(text)
+                               self.nameLabel.text = "\(fname) \(lname)"
+                               self.usernameLabel.text = "\(username)"
+                               self.followUserbutton.setTitle("follow user", for: .normal)
+                               self.nameLabel.text = "\(fname) \(lname)"
+                               self.userFoundFlag = true
+                
+                               
+                           } else {
+
+                               self.nameLabel.text = ""
+                               self.usernameLabel.text = ""
+                               self.userFoundFlag = false
+                           }
+                       }
+               }
+
     }
+    
+    @IBOutlet weak var usernameSearch: UITextField!
+    
+    
+    @IBAction func onFollowPress(_ sender: Any) {
+        if (userFoundFlag == true){
+            let currUserRef = db.collection("users").document(self.username)
+            currUserRef.updateData(["following": FieldValue.arrayUnion([usernameSearch.text])])
+        }
+    }
+    
+    
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+        super.touchesBegan(touches, with: event)
+    }
 }

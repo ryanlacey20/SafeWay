@@ -63,7 +63,7 @@ class SignUpViewController: UIViewController {
             let docRef = db.collection("collection").document(username)
             docRef.getDocument { (document, error) in
                 //checking if the username is taken (the username is used as the document name)
-                if ((document?.exists) == nil) {
+                if ((document?.exists) != nil) {
                         //Create user once validated
                         Auth.auth().createUser(withEmail: email, password: password ){(result, err) in
                         if (err != nil) {
@@ -72,7 +72,7 @@ class SignUpViewController: UIViewController {
                         }else{
                             //succesful user creation
                             let db = FirebaseFirestore.Firestore.firestore()
-                            db.collection("users").document(username).setData(["first_name": firstName, "last_name": lastName, "username": username, "uid": result!.user.uid]) { (error) in
+                            db.collection("users").document(username).setData(["first_name": firstName, "last_name": lastName, "username": username, "uid": result!.user.uid, "following": []]) { (error) in
                                 if error != nil{
                                     //TODO reconsider how this is handled
                                     self.showErrorMessage(message: "User has been created, error saving first name and last name")
