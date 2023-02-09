@@ -27,11 +27,9 @@ class GreetingViewController: UIViewController {
         // Do any additional setup after loading the view.
         if Auth.auth().currentUser != nil {
           // User is signed in.
-            print("USER IS LOGGED IN ")
             self.goToWelcomeScreen()
         } else {
           // No user is signed in.
-            print("THE USER IS LOGGED OUT !")
         }
     }
     

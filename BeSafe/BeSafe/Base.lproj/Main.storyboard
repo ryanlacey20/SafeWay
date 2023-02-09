@@ -308,33 +308,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" id="5VM-yv-geF">
-                                <rect key="frame" x="16" y="59" width="361" height="682"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Pq5-0f-lO7">
-                                        <rect key="frame" x="0.0" y="0.0" width="383" height="682"/>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="8H4-iu-Fhp" firstAttribute="bottom" secondItem="Pq5-0f-lO7" secondAttribute="bottom" id="Del-zG-apl"/>
-                                    <constraint firstItem="Pq5-0f-lO7" firstAttribute="leading" secondItem="8H4-iu-Fhp" secondAttribute="leading" id="Edu-PW-I4M"/>
-                                    <constraint firstItem="Pq5-0f-lO7" firstAttribute="top" secondItem="8H4-iu-Fhp" secondAttribute="top" id="Ved-Xn-TZO"/>
-                                    <constraint firstItem="8H4-iu-Fhp" firstAttribute="trailing" secondItem="Pq5-0f-lO7" secondAttribute="trailing" id="sur-cc-GgJ"/>
-                                </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="xeB-5i-W4s"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="8H4-iu-Fhp"/>
-                            </scrollView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9Tl-7O-Qhe">
+                                <rect key="frame" x="0.0" y="59" width="393" height="710"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="84T-ff-uV0">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="84T-ff-uV0" id="Scx-Ip-6do">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qjy-sb-2JC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="5VM-yv-geF" firstAttribute="leading" secondItem="qjy-sb-2JC" secondAttribute="leading" constant="5" id="b8b-QZ-ftO"/>
-                            <constraint firstItem="5VM-yv-geF" firstAttribute="top" secondItem="qjy-sb-2JC" secondAttribute="top" constant="10" id="mU8-bL-VGi"/>
-                            <constraint firstItem="qjy-sb-2JC" firstAttribute="trailing" secondItem="5VM-yv-geF" secondAttribute="trailing" constant="5" id="xPh-sy-589"/>
+                            <constraint firstItem="9Tl-7O-Qhe" firstAttribute="leading" secondItem="qjy-sb-2JC" secondAttribute="leading" id="B8F-hR-GZr"/>
+                            <constraint firstItem="qjy-sb-2JC" firstAttribute="trailing" secondItem="9Tl-7O-Qhe" secondAttribute="trailing" id="C6N-Cm-MQR"/>
+                            <constraint firstItem="qjy-sb-2JC" firstAttribute="bottom" secondItem="9Tl-7O-Qhe" secondAttribute="bottom" id="e8H-rl-RBA"/>
+                            <constraint firstItem="9Tl-7O-Qhe" firstAttribute="top" secondItem="qjy-sb-2JC" secondAttribute="top" id="m7n-ZK-vk3"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Check-in" image="checkmark.seal" catalog="system" id="aca-Xj-acE"/>
+                    <connections>
+                        <outlet property="friendsTableView" destination="9Tl-7O-Qhe" id="MzL-Vi-Acc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sVm-P0-L6a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

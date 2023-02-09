@@ -37,7 +37,6 @@ class AddFriendsViewController : UIViewController {
     @IBOutlet weak var followUserbutton: UIButton!
     
     @IBAction func searchBarEdited(_ sender: Any) {
-        print("this was triggered")
         db.collection("users").whereField("username", isEqualTo: usernameSearch.text!)
                    .getDocuments { (querySnapshot, error) in
                        if let error = error {
