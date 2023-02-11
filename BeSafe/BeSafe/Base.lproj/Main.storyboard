@@ -312,13 +312,36 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="710"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="84T-ff-uV0">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="87" id="84T-ff-uV0" customClass="CheckinTableViewCell" customModule="BeSafe" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="87"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="84T-ff-uV0" id="Scx-Ip-6do">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="87"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FSO-25-IrN">
+                                                    <rect key="frame" x="300" y="4" width="93" height="35"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="tinted" title="Check-In"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" restorationIdentifier="checkInStatusLabel" text="Check in Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZq-Ti-mgH">
+                                                    <rect key="frame" x="173" y="38" width="120" height="40"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="hZq-Ti-mgH" secondAttribute="trailing" constant="80" id="4Pj-6D-cof"/>
+                                                <constraint firstItem="hZq-Ti-mgH" firstAttribute="bottom" secondItem="Scx-Ip-6do" secondAttribute="bottomMargin" constant="2" id="Hdc-4A-Js2"/>
+                                                <constraint firstItem="hZq-Ti-mgH" firstAttribute="top" secondItem="Scx-Ip-6do" secondAttribute="top" constant="60" id="JaC-QC-aTf"/>
+                                                <constraint firstAttribute="trailing" secondItem="FSO-25-IrN" secondAttribute="trailing" id="aRz-t0-IMF"/>
+                                                <constraint firstItem="FSO-25-IrN" firstAttribute="top" secondItem="Scx-Ip-6do" secondAttribute="topMargin" constant="-7" id="jNj-Rd-9vw"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="checkInStatusLabel" destination="hZq-Ti-mgH" id="KI2-Gq-jZ1"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

@@ -12,6 +12,7 @@
 		9C5F6E0D29217B43005097BB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5F6E0C29217B43005097BB /* Constants.swift */; };
 		9C83B5F329798AC7008CD7D4 /* GreetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83B5F229798AC1008CD7D4 /* GreetingViewController.swift */; };
 		9C83B5F529798FEF008CD7D4 /* AddFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83B5F429798FEF008CD7D4 /* AddFriendsViewController.swift */; };
+		9C89F8F72996DC5600D17D3C /* CheckinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C89F8F62996DC5600D17D3C /* CheckinTableViewCell.swift */; };
 		9CB92BD729205BFD007ABF1B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CB92BD629205BFD007ABF1B /* GoogleService-Info.plist */; };
 		9CC0126A292037CA004AE0F3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC01269292037CA004AE0F3 /* LoginViewController.swift */; };
 		9CE9DDFA291983A0004163B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE9DDF9291983A0004163B2 /* AppDelegate.swift */; };
@@ -57,6 +58,7 @@
 		9C5F6E0C29217B43005097BB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9C83B5F229798AC1008CD7D4 /* GreetingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingViewController.swift; sourceTree = "<group>"; };
 		9C83B5F429798FEF008CD7D4 /* AddFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendsViewController.swift; sourceTree = "<group>"; };
+		9C89F8F62996DC5600D17D3C /* CheckinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinTableViewCell.swift; sourceTree = "<group>"; };
 		9CB92BD629205BFD007ABF1B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9CC01269292037CA004AE0F3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9CE9DDF6291983A0004163B2 /* BeSafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeSafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +110,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C89F8F52996DC3300D17D3C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9C89F8F62996DC5600D17D3C /* CheckinTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		9CC0126D29203838004AE0F3 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +154,7 @@
 		9CE9DDF8291983A0004163B2 /* BeSafe */ = {
 			isa = PBXGroup;
 			children = (
+				9C89F8F52996DC3300D17D3C /* Cells */,
 				9CF92FB729213DD9009B7224 /* Helpers */,
 				9CC0126D29203838004AE0F3 /* View Controllers */,
 				9CE9DDF9291983A0004163B2 /* AppDelegate.swift */,
@@ -330,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CE9DDFE291983A0004163B2 /* SignUpViewController.swift in Sources */,
+				9C89F8F72996DC5600D17D3C /* CheckinTableViewCell.swift in Sources */,
 				9CE9DE04291983A0004163B2 /* BeSafe.xcdatamodeld in Sources */,
 				9CC0126A292037CA004AE0F3 /* LoginViewController.swift in Sources */,
 				9CE9DDFA291983A0004163B2 /* AppDelegate.swift in Sources */,
