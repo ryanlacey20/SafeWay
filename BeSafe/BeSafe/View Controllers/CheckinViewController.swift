@@ -8,30 +8,56 @@
 import UIKit
 import FirebaseFirestore
 import UserNotifications
+import FirebaseAuth
 
 class CheckinViewController: UIViewController, UITableViewDataSource {
     
 
-   
-
+//    @IBAction func checkInButton(_ sender: Any) {
+//        let db = FirebaseFirestore.Firestore.firestore()
+//        db.collection("users").document(username).collection("checkInRequests").document("ryanlacey").setData(["sender":username])
+//    }
+    
     @IBOutlet weak var friendsTableView: UITableView!
     
     @IBOutlet weak var checkInStatusLabel: UILabel!
     
     var dataArray = [String : Any]()
     var followingList = [String]()
+    var username = "empty"
+    
+    let db = FirebaseFirestore.Firestore.firestore()
+    
+    let refreshControl = UIRefreshControl()
 
-    let db = Firestore.firestore()
-
-    override func viewDidLoad() {
+    @objc func refreshData() {
+        getFollowingData()
+        friendsTableView.reloadData()
+        refreshControl.endRefreshing()
+    }
+    
+    override func viewDidLoad()  {
         super.viewDidLoad()
+        friendsTableView.refreshControl = refreshControl
+        
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        
         friendsTableView.dataSource = self
+        
         getFollowingData()
         listenForCheckInFlag()
+        self.friendsTableView.reloadData()
+
+//        await getFollowingData()
+//        listenForCheckInFlag()
+//        self.friendsTableView.reloadData()
+        
+        
     }
 
-    func getFollowingData() {
-        db.collection("users").whereField("username", isEqualTo: "ryanlacey").getDocuments { (querySnapshot, err) in
+    func getFollowingData(){
+
+        db.collection("users").whereField("uid", isEqualTo: Auth.auth().currentUser?.uid).getDocuments { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -39,58 +65,59 @@ class CheckinViewController: UIViewController, UITableViewDataSource {
                     let data = document.data()
                     self.dataArray = data
                     self.followingList = data["following"] as! [String]
-                    print("this is data array", self.dataArray)
+                    self.username = data["username"] as! String
                     self.friendsTableView.reloadData()
+                    
                 }
             }
         }
     }
 
     func listenForCheckInFlag(){
-        let usersRef = Firestore.firestore().collection("users")
-        let userRef = usersRef.document("ryanlacey")
-        
-        userRef.addSnapshotListener { (documentSnapshot, error) in
+
+            let usersRef = Firestore.firestore().collection("users")
+            let userRef = usersRef.document("ryanlacey")
+            
+            userRef.addSnapshotListener { (documentSnapshot, error) in
             if let document = documentSnapshot, document.exists {
                 let checkInFlag = document.data()!["checkInFlag"] as! Bool
-                print("this is the checkin flagydaggy", checkInFlag)
                 if checkInFlag == true {
-//                    let content = UNMutableNotificationContent()
-//                    content.title = "Check-in successful!"
-//                    content.body = "The check-in flag for has been set to true."
-//
-//                    let request = UNNotificationRequest(identifier: "CheckInSuccessful", content: content, trigger: UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false))
-//                    UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-//                    self.scheduleCheckInFlagNotification()
+                    // Define an action that will be displayed in the notification.
+                    let action = UNNotificationAction(identifier: "viewAction", title: "View", options: [.foreground])
+                    
+                    // Define a category that includes the action.
+                    let category = UNNotificationCategory(identifier: "myCategory", actions: [action], intentIdentifiers: [], options: [])
+                    
+                    // Register the category with the notification center.
+                    UNUserNotificationCenter.current().setNotificationCategories([category])
+                    
+                    // Define the content of the notification.
+                    let content = UNMutableNotificationContent()
+                    content.title = "Checkin request"
+                    content.body = "This is an alert notification."
+                    content.categoryIdentifier = "myCategory"
+                    
+                    // Define the trigger for the notification.
+                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+                    
+                    // Define the notification request and add it to the notification center.
+                    let request = UNNotificationRequest(identifier: "myNotification", content: content, trigger: trigger)
+                    UNUserNotificationCenter.current().add(request) { error in
+                        if let error = error {
+                            print("Error: \(error.localizedDescription)")
+                        } else {
+                            print("Notification scheduled.")
+                        }
+                    }
                 }
             } else {
                 print("Document does not exist")
             }
         }
-        
-    }
     
-
-    func scheduleCheckInFlagNotification() {
-        // 1. Create the notification content
-        let content = UNMutableNotificationContent()
-        content.title = "Check-in Required"
-        content.body = "Please check in to lower the flag."
-
-        // 2. Create a trigger for the notification
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-
-        // 3. Create a request for the notification
-        let request = UNNotificationRequest(identifier: "CheckInFlagNotification", content: content, trigger: trigger)
-
-        // 4. Add the request to the notification center
-        UNUserNotificationCenter.current().add(request) { (error) in
-            if let error = error {
-                print("Error adding notification request: \(error)")
-            }
-        }
-    }
-
+}
+    
+// TABLE SET UP
     func tableView(_ friendsTableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return followingList.count
     }

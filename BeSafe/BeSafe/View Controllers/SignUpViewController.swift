@@ -78,6 +78,7 @@ class SignUpViewController: UIViewController {
                                     self.showErrorMessage(message: "User has been created, error saving first name and last name")
                                 }
                             }
+
                             self.goToWelcomeScreen()
                             
                         }
