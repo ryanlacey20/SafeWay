@@ -6,11 +6,19 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class CheckinTableViewCell: UITableViewCell {
+    var recievingUsername = ""
+    var sendingUsername = ""
 
     @IBOutlet weak var checkInStatusLabel: UILabel!
     
+
+    @IBAction func checkInButtonPressed(_ sender: Any) {
+        let db = FirebaseFirestore.Firestore.firestore()
+        db.collection("users").document(recievingUsername).collection("checkInRequests").document(sendingUsername).setData(["sender":sendingUsername, "timestamp": Int(Date().timeIntervalSince1970)])
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

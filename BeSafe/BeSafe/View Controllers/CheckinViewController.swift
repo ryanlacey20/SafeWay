@@ -15,7 +15,7 @@ class CheckinViewController: UIViewController, UITableViewDataSource {
 
 //    @IBAction func checkInButton(_ sender: Any) {
 //        let db = FirebaseFirestore.Firestore.firestore()
-//        db.collection("users").document(username).collection("checkInRequests").document("ryanlacey").setData(["sender":username])
+//        db.collection("users").document(username).collection("checkInRequests").document(username).setData(["sender":username])
 //    }
     
     @IBOutlet weak var friendsTableView: UITableView!
@@ -45,13 +45,10 @@ class CheckinViewController: UIViewController, UITableViewDataSource {
         friendsTableView.dataSource = self
         
         getFollowingData()
-        listenForCheckInFlag()
-        self.friendsTableView.reloadData()
-
-//        await getFollowingData()
-//        listenForCheckInFlag()
-//        self.friendsTableView.reloadData()
         
+        self.friendsTableView.reloadData()
+        listenForCheckInFlag()
+
         
     }
 
@@ -75,8 +72,8 @@ class CheckinViewController: UIViewController, UITableViewDataSource {
 
     func listenForCheckInFlag(){
 
-            let usersRef = Firestore.firestore().collection("users")
-            let userRef = usersRef.document("ryanlacey")
+            let usersDBRef = Firestore.firestore().collection("users")
+            let userRef = usersDBRef.document("username")
             
             userRef.addSnapshotListener { (documentSnapshot, error) in
             if let document = documentSnapshot, document.exists {
@@ -127,6 +124,8 @@ class CheckinViewController: UIViewController, UITableViewDataSource {
 
         let followingList = dataArray["following"] as! [String]
         cell.textLabel?.text = followingList[indexPath.row]
+        cell.recievingUsername = followingList[indexPath.row]
+        cell.sendingUsername = self.username
         cell.checkInStatusLabel.text = "poo"
         return cell
     }

@@ -13,6 +13,8 @@
 		9C83B5F329798AC7008CD7D4 /* GreetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83B5F229798AC1008CD7D4 /* GreetingViewController.swift */; };
 		9C83B5F529798FEF008CD7D4 /* AddFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83B5F429798FEF008CD7D4 /* AddFriendsViewController.swift */; };
 		9C89F8F72996DC5600D17D3C /* CheckinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C89F8F62996DC5600D17D3C /* CheckinTableViewCell.swift */; };
+		9C8F78212998546400588A8A /* CheckInRequestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F78202998546400588A8A /* CheckInRequestsTableViewCell.swift */; };
+		9C8F78232998548A00588A8A /* CheckInRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F78222998548A00588A8A /* CheckInRequestsViewController.swift */; };
 		9CB92BD729205BFD007ABF1B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CB92BD629205BFD007ABF1B /* GoogleService-Info.plist */; };
 		9CC0126A292037CA004AE0F3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC01269292037CA004AE0F3 /* LoginViewController.swift */; };
 		9CE9DDFA291983A0004163B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE9DDF9291983A0004163B2 /* AppDelegate.swift */; };
@@ -59,6 +61,8 @@
 		9C83B5F229798AC1008CD7D4 /* GreetingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingViewController.swift; sourceTree = "<group>"; };
 		9C83B5F429798FEF008CD7D4 /* AddFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendsViewController.swift; sourceTree = "<group>"; };
 		9C89F8F62996DC5600D17D3C /* CheckinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinTableViewCell.swift; sourceTree = "<group>"; };
+		9C8F78202998546400588A8A /* CheckInRequestsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInRequestsTableViewCell.swift; sourceTree = "<group>"; };
+		9C8F78222998548A00588A8A /* CheckInRequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInRequestsViewController.swift; sourceTree = "<group>"; };
 		9CB92BD629205BFD007ABF1B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9CC01269292037CA004AE0F3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9CE9DDF6291983A0004163B2 /* BeSafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeSafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				9C89F8F62996DC5600D17D3C /* CheckinTableViewCell.swift */,
+				9C8F78202998546400588A8A /* CheckInRequestsTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -127,6 +132,7 @@
 				9C01EEBE29241CC90056E1E6 /* HomeViewController.swift */,
 				9C83B5F429798FEF008CD7D4 /* AddFriendsViewController.swift */,
 				9C200DD129905B4E00DBB127 /* CheckinViewController.swift */,
+				9C8F78222998548A00588A8A /* CheckInRequestsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -342,6 +348,7 @@
 			files = (
 				9CE9DDFE291983A0004163B2 /* SignUpViewController.swift in Sources */,
 				9C89F8F72996DC5600D17D3C /* CheckinTableViewCell.swift in Sources */,
+				9C8F78212998546400588A8A /* CheckInRequestsTableViewCell.swift in Sources */,
 				9CE9DE04291983A0004163B2 /* BeSafe.xcdatamodeld in Sources */,
 				9CC0126A292037CA004AE0F3 /* LoginViewController.swift in Sources */,
 				9CE9DDFA291983A0004163B2 /* AppDelegate.swift in Sources */,
@@ -351,6 +358,7 @@
 				9C83B5F329798AC7008CD7D4 /* GreetingViewController.swift in Sources */,
 				9C200DD229905B4E00DBB127 /* CheckinViewController.swift in Sources */,
 				9CF92FB929213DF1009B7224 /* Utilities.swift in Sources */,
+				9C8F78232998548A00588A8A /* CheckInRequestsViewController.swift in Sources */,
 				9C5F6E0D29217B43005097BB /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -309,7 +309,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9Tl-7O-Qhe">
-                                <rect key="frame" x="0.0" y="59" width="393" height="710"/>
+                                <rect key="frame" x="0.0" y="116" width="393" height="653"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="87" id="84T-ff-uV0" customClass="CheckinTableViewCell" customModule="BeSafe" customModuleProvider="target">
@@ -324,7 +324,7 @@
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="tinted" title="Check-In"/>
                                                     <connections>
-                                                        <action selector="checkInButton:" destination="Ahh-b7-IRk" eventType="touchUpInside" id="caD-Dt-U4r"/>
+                                                        <action selector="checkInButtonPressed:" destination="84T-ff-uV0" eventType="touchUpInside" id="3FJ-14-uV4"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" restorationIdentifier="checkInStatusLabel" text="Check in Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZq-Ti-mgH">
@@ -348,14 +348,33 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqd-fR-TRh">
+                                <rect key="frame" x="298" y="59" width="95" height="55"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="person.fill.questionmark" catalog="system" imagePlacement="top" title="Requests"/>
+                                <connections>
+                                    <segue destination="6Yg-Tt-Iu0" kind="show" id="Lbd-M2-grf"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check In Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y32-Ve-LHy">
+                                <rect key="frame" x="10" y="59" width="176.33333333333334" height="57"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qjy-sb-2JC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="9Tl-7O-Qhe" firstAttribute="leading" secondItem="qjy-sb-2JC" secondAttribute="leading" id="B8F-hR-GZr"/>
                             <constraint firstItem="qjy-sb-2JC" firstAttribute="trailing" secondItem="9Tl-7O-Qhe" secondAttribute="trailing" id="C6N-Cm-MQR"/>
+                            <constraint firstItem="Tqd-fR-TRh" firstAttribute="top" secondItem="qjy-sb-2JC" secondAttribute="top" id="Cgt-ma-wrA"/>
+                            <constraint firstAttribute="trailing" secondItem="Tqd-fR-TRh" secondAttribute="trailing" id="MwL-EZ-pT4"/>
+                            <constraint firstItem="y32-Ve-LHy" firstAttribute="leading" secondItem="qjy-sb-2JC" secondAttribute="leading" constant="10" id="UIZ-hG-t2r"/>
+                            <constraint firstItem="y32-Ve-LHy" firstAttribute="top" secondItem="qjy-sb-2JC" secondAttribute="top" id="dJ2-9J-qZ7"/>
                             <constraint firstItem="qjy-sb-2JC" firstAttribute="bottom" secondItem="9Tl-7O-Qhe" secondAttribute="bottom" id="e8H-rl-RBA"/>
-                            <constraint firstItem="9Tl-7O-Qhe" firstAttribute="top" secondItem="qjy-sb-2JC" secondAttribute="top" id="m7n-ZK-vk3"/>
+                            <constraint firstItem="9Tl-7O-Qhe" firstAttribute="top" secondItem="Tqd-fR-TRh" secondAttribute="bottom" constant="2" id="m7n-ZK-vk3"/>
+                            <constraint firstItem="9Tl-7O-Qhe" firstAttribute="top" secondItem="y32-Ve-LHy" secondAttribute="bottom" id="rqS-ff-EQC"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Check-in" image="checkmark.seal" catalog="system" id="aca-Xj-acE"/>
@@ -366,6 +385,69 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sVm-P0-L6a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3035.8778625954196" y="772.53521126760563"/>
+        </scene>
+        <!--Check-in Requests-->
+        <scene sceneID="0gU-a2-7gs">
+            <objects>
+                <viewController title="Check-in Requests" id="6Yg-Tt-Iu0" customClass="CheckInRequestsViewController" customModule="BeSafe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="v8t-kY-CWO">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="48U-nB-b1p">
+                                <rect key="frame" x="0.0" y="94" width="393" height="689"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="dGj-aV-VTl" customClass="CheckInRequestsTableViewCell" customModule="BeSafe" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dGj-aV-VTl" id="q8m-qU-yUe">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHd-MF-iFf">
+                                                    <rect key="frame" x="25" y="16" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="BHd-MF-iFf" firstAttribute="top" secondItem="q8m-qU-yUe" secondAttribute="topMargin" constant="5" id="hbN-bz-sNx"/>
+                                                <constraint firstItem="BHd-MF-iFf" firstAttribute="leading" secondItem="q8m-qU-yUe" secondAttribute="leadingMargin" constant="5" id="s2x-XQ-PPw"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="senderLabel" destination="BHd-MF-iFf" id="knM-gs-18s"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tRO-Cs-rya">
+                                <rect key="frame" x="4.9999999999999964" y="59" width="61.666666666666657" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Back"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="nLE-AL-7ge"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="48U-nB-b1p" firstAttribute="top" secondItem="tRO-Cs-rya" secondAttribute="bottom" id="Lrk-je-giN"/>
+                            <constraint firstItem="nLE-AL-7ge" firstAttribute="trailing" secondItem="48U-nB-b1p" secondAttribute="trailing" id="VRd-XS-stj"/>
+                            <constraint firstItem="tRO-Cs-rya" firstAttribute="top" secondItem="nLE-AL-7ge" secondAttribute="top" id="dsc-ci-8jF"/>
+                            <constraint firstItem="nLE-AL-7ge" firstAttribute="bottom" secondItem="48U-nB-b1p" secondAttribute="bottom" id="fhc-el-sEg"/>
+                            <constraint firstItem="48U-nB-b1p" firstAttribute="leading" secondItem="nLE-AL-7ge" secondAttribute="leading" id="hmu-Z6-mgw"/>
+                            <constraint firstItem="tRO-Cs-rya" firstAttribute="leading" secondItem="v8t-kY-CWO" secondAttribute="leading" constant="5" id="lWp-IC-4XY"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="VAe-aP-Iq9"/>
+                    <connections>
+                        <outlet property="checkInRequestsTable" destination="48U-nB-b1p" id="OMN-1h-Yni"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iWS-GH-l2V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4033" y="1207"/>
         </scene>
         <!--Add Friend-->
         <scene sceneID="ARx-Jc-3ek">
@@ -475,6 +557,7 @@
         <image name="checkmark.seal" catalog="system" width="128" height="124"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="person.badge.plus" catalog="system" width="128" height="125"/>
+        <image name="person.fill.questionmark" catalog="system" width="128" height="102"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
