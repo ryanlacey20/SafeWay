@@ -18,20 +18,27 @@ class GreetingViewController: UIViewController {
     
     func goToWelcomeScreen(){
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: Constants.Storyboard.welcomePage) as! UITabBarController
         self.show(nextViewController, sender: self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if let navController = self.navigationController {
+            print("here is nav controllers1", navController.viewControllers)
+        }
         // Do any additional setup after loading the view.
         if Auth.auth().currentUser != nil {
           // User is signed in.
-            print("USER IS LOGGED IN ")
+            Utilities.getCurrentUserName { username in
+                Constants.currentUser.username = username!
+            }
+            Constants.currentUser.uid = Auth.auth().currentUser!.uid
             self.goToWelcomeScreen()
+            print("user is signed in")
         } else {
           // No user is signed in.
-            print("THE USER IS LOGGED OUT !")
         }
     }
     

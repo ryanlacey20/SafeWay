@@ -11,5 +11,9 @@ struct Constants {
     struct Storyboard{
         static let welcomePage = "TabBarController"
     }
+    struct currentUser{
+        static var username = ""
+        static var uid = ""
+    }
     
 }

@@ -78,6 +78,7 @@ class SignUpViewController: UIViewController {
                                     self.showErrorMessage(message: "User has been created, error saving first name and last name")
                                 }
                             }
+
                             self.goToWelcomeScreen()
                             
                         }
@@ -109,18 +110,13 @@ class SignUpViewController: UIViewController {
 
         
     
-    //TODO: delete these prints and authorise
 override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        print("test")
         if Auth.auth().currentUser != nil {
           // User is signed in.
-            print("THE USER IS LOGGED IN !","")
-            print(Auth.auth().currentUser?.email)
         } else {
           // No user is signed in.
-            print("THE USER IS LOGGED OUT !","")
         }
         setUpElements()
     
