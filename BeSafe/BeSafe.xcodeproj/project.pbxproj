@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		9C01EEBF29241CC90056E1E6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C01EEBE29241CC90056E1E6 /* HomeViewController.swift */; };
 		9C200DD229905B4E00DBB127 /* CheckinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C200DD129905B4E00DBB127 /* CheckinViewController.swift */; };
+		9C4430DC29A2EB8E00854382 /* FriendRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4430DB29A2EB8E00854382 /* FriendRequestsViewController.swift */; };
+		9C4430E029A2F46000854382 /* PanicMessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4430DF29A2F46000854382 /* PanicMessagesTableViewCell.swift */; };
+		9C4430E429A2F58E00854382 /* PanicMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4430E329A2F58E00854382 /* PanicMessagesViewController.swift */; };
 		9C5F6E0D29217B43005097BB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5F6E0C29217B43005097BB /* Constants.swift */; };
 		9C83B5F329798AC7008CD7D4 /* GreetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83B5F229798AC1008CD7D4 /* GreetingViewController.swift */; };
 		9C83B5F529798FEF008CD7D4 /* AddFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83B5F429798FEF008CD7D4 /* AddFriendsViewController.swift */; };
@@ -57,6 +60,9 @@
 /* Begin PBXFileReference section */
 		9C01EEBE29241CC90056E1E6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9C200DD129905B4E00DBB127 /* CheckinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinViewController.swift; sourceTree = "<group>"; };
+		9C4430DB29A2EB8E00854382 /* FriendRequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestsViewController.swift; sourceTree = "<group>"; };
+		9C4430DF29A2F46000854382 /* PanicMessagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanicMessagesTableViewCell.swift; sourceTree = "<group>"; };
+		9C4430E329A2F58E00854382 /* PanicMessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanicMessagesViewController.swift; sourceTree = "<group>"; };
 		9C5F6E0C29217B43005097BB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9C83B5F229798AC1008CD7D4 /* GreetingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingViewController.swift; sourceTree = "<group>"; };
 		9C83B5F429798FEF008CD7D4 /* AddFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendsViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +125,7 @@
 			children = (
 				9C89F8F62996DC5600D17D3C /* CheckinTableViewCell.swift */,
 				9C8F78202998546400588A8A /* CheckInRequestsTableViewCell.swift */,
+				9C4430DF29A2F46000854382 /* PanicMessagesTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -133,6 +140,8 @@
 				9C83B5F429798FEF008CD7D4 /* AddFriendsViewController.swift */,
 				9C200DD129905B4E00DBB127 /* CheckinViewController.swift */,
 				9C8F78222998548A00588A8A /* CheckInRequestsViewController.swift */,
+				9C4430DB29A2EB8E00854382 /* FriendRequestsViewController.swift */,
+				9C4430E329A2F58E00854382 /* PanicMessagesViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -347,7 +356,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CE9DDFE291983A0004163B2 /* SignUpViewController.swift in Sources */,
+				9C4430DC29A2EB8E00854382 /* FriendRequestsViewController.swift in Sources */,
+				9C4430E429A2F58E00854382 /* PanicMessagesViewController.swift in Sources */,
 				9C89F8F72996DC5600D17D3C /* CheckinTableViewCell.swift in Sources */,
+				9C4430E029A2F46000854382 /* PanicMessagesTableViewCell.swift in Sources */,
 				9C8F78212998546400588A8A /* CheckInRequestsTableViewCell.swift in Sources */,
 				9CE9DE04291983A0004163B2 /* BeSafe.xcdatamodeld in Sources */,
 				9CC0126A292037CA004AE0F3 /* LoginViewController.swift in Sources */,

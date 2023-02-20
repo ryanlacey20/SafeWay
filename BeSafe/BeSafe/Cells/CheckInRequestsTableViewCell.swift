@@ -6,11 +6,30 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import FirebaseAuth
+
+protocol CheckInRequestsTableViewCellDelegate: AnyObject {
+    func checkInButtonTapped(senderUsername: String)
+}
 
 class CheckInRequestsTableViewCell: UITableViewCell {
+    
+    let db = FirebaseFirestore.Firestore.firestore()
+    var userUsername = String()
 
+    var senderUsername = String()
+    weak var delegate: CheckInRequestsTableViewCellDelegate?
+    
+    @IBAction func checkInAsSafeButton(_ sender: Any) {
+        
+        delegate?.checkInButtonTapped(senderUsername: senderUsername)
+
+    }
+    
     @IBOutlet weak var senderLabel: UILabel!
     
+    @IBOutlet weak var timeRequestedLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -11,12 +11,16 @@ import FirebaseAuth
 import FirebaseFirestore
 
 class Utilities{
+    static let db = FirebaseFirestore.Firestore.firestore()
+    
+    //function to test is the password secure enough
     static func isPasswordValid(_ password : String) -> Bool {
         
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
         return passwordTest.evaluate(with: password)
     }
     
+    //function to get the username of the current user
     static func getCurrentUserName(completion: @escaping (String?) -> Void) {
         let db = FirebaseFirestore.Firestore.firestore()
         db.collection("users").whereField("uid", isEqualTo: Auth.auth().currentUser!.uid).getDocuments { (querySnapshot, err) in
@@ -24,8 +28,8 @@ class Utilities{
                 print("Error getting documents: \(err)")
                 completion(nil)
             } else {
-                if let firstName = querySnapshot?.documents.first?.data()["first_name"] as? String {
-                    completion("Welcome \(firstName)")
+                if let username = querySnapshot?.documents.first?.data()["username"] as? String {
+                    completion(username)
                 } else {
                     completion("Welcome blank")
                 }
@@ -33,49 +37,38 @@ class Utilities{
         }
     }
     
-    static func getFromDB(field : String, value: String, completion: @escaping ([String: Any]) -> Void) {
-        let db = FirebaseFirestore.Firestore.firestore()
-        let docRef = db.collection("users").whereField(field, isEqualTo: value).getDocuments { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    completion(document.data())
-                }
+    //function which gets the users followed by the parameter "forUser"
+    static func getFollowersList(forUser: String, completion: @escaping (String?) -> Void) {
+        db.collection("users").document(Constants.currentUser.username).getDocument { (user, error) in
+            let data = user?.data()
+            let followersList = data?["following"] as? String
+            completion(followersList)
+        }
+    }
+    
+    
+    static func getListFromSubcollection(user: String, subcollectionName: String, listKey: String, completion: @escaping ([String : Any])->Void){
+        var returnList: [String:Any] = [:]
+        db.collection("users").document(user).collection(subcollectionName).getDocuments { (querySnapshot, err) in
+            if let documents = querySnapshot?.documents{
+                    for document in documents {
+                        let data = document.data()
+                        returnList[data[listKey] as! String] = data
+                    }
+                completion(returnList)
+                
+            }
+        }
+    }
+    
+    static func getDataFromUser(user: String, completion: @escaping ([String:Any])->Void ){
+        db.collection("users").document(user).getDocument { doc, error in
+            if let data = doc?.data(){
+                completion(data)
             }
         }
     }
 
 
-    
-//    static func queryDB(field: String, queryValue: Any, completion: @escaping ([String : String]?) -> Void) {
-//        let db = Firestore.firestore()
-//        db.collection("users").whereField(field, isEqualTo: queryValue)
-//            .getDocuments { (querySnapshot, error) in
-//                if let error = error {
-//                    print("Error querying DB: \(error)")
-//                    completion(nil)
-//                    return
-//                }
-//                guard let document = querySnapshot?.documents.first else {
-//                    completion(nil)
-//                    return
-//                }
-//                completion(document)
-//            }
-//    }
-//
-//
-//    static func getCurrentUserUsername(completion: @escaping (Any?) -> Void) {
-//        queryDB(field: "uid", queryValue: Auth.auth().currentUser?.uid) { data in
-//            if data == nil {
-//                print("No data returned from the query")
-//                completion(nil)
-//                return
-//            }
-//            // Use the data returned from the query
-//            completion(data!["username"]!)
-//        }
-//    }
     
 }

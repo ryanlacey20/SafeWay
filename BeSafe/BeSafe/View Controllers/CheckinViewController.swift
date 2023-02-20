@@ -13,10 +13,6 @@ import FirebaseAuth
 class CheckinViewController: UIViewController, UITableViewDataSource {
     
 
-//    @IBAction func checkInButton(_ sender: Any) {
-//        let db = FirebaseFirestore.Firestore.firestore()
-//        db.collection("users").document(username).collection("checkInRequests").document(username).setData(["sender":username])
-//    }
     
     @IBOutlet weak var friendsTableView: UITableView!
     
@@ -47,7 +43,7 @@ class CheckinViewController: UIViewController, UITableViewDataSource {
         getFollowingData()
         
         self.friendsTableView.reloadData()
-        listenForCheckInFlag()
+//        listenForCheckInFlag()
 
         
     }
@@ -70,49 +66,6 @@ class CheckinViewController: UIViewController, UITableViewDataSource {
         }
     }
 
-    func listenForCheckInFlag(){
-
-            let usersDBRef = Firestore.firestore().collection("users")
-            let userRef = usersDBRef.document("username")
-            
-            userRef.addSnapshotListener { (documentSnapshot, error) in
-            if let document = documentSnapshot, document.exists {
-                let checkInFlag = document.data()!["checkInFlag"] as! Bool
-                if checkInFlag == true {
-                    // Define an action that will be displayed in the notification.
-                    let action = UNNotificationAction(identifier: "viewAction", title: "View", options: [.foreground])
-                    
-                    // Define a category that includes the action.
-                    let category = UNNotificationCategory(identifier: "myCategory", actions: [action], intentIdentifiers: [], options: [])
-                    
-                    // Register the category with the notification center.
-                    UNUserNotificationCenter.current().setNotificationCategories([category])
-                    
-                    // Define the content of the notification.
-                    let content = UNMutableNotificationContent()
-                    content.title = "Checkin request"
-                    content.body = "This is an alert notification."
-                    content.categoryIdentifier = "myCategory"
-                    
-                    // Define the trigger for the notification.
-                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-                    
-                    // Define the notification request and add it to the notification center.
-                    let request = UNNotificationRequest(identifier: "myNotification", content: content, trigger: trigger)
-                    UNUserNotificationCenter.current().add(request) { error in
-                        if let error = error {
-                            print("Error: \(error.localizedDescription)")
-                        } else {
-                            print("Notification scheduled.")
-                        }
-                    }
-                }
-            } else {
-                print("Document does not exist")
-            }
-        }
-    
-}
     
 // TABLE SET UP
     func tableView(_ friendsTableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -121,12 +74,37 @@ class CheckinViewController: UIViewController, UITableViewDataSource {
 
     func tableView(_ friendsTableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = friendsTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CheckinTableViewCell
+        
+        let db = Firestore.firestore()
+        let usersCollectionRef = db.collection("users")
+        let usernameDocRef = usersCollectionRef.document("username")
+        let checkInRequestsSentCollRef = usernameDocRef.collection("checkInRequestsSent")
+        let recievingUserDocRef = checkInRequestsSentCollRef.document("recievinguser")
 
+        recievingUserDocRef.addSnapshotListener { (documentSnapshot, error) in
+            guard let document = documentSnapshot else {
+                print("Error fetching document: \(error!)")
+                return
+            }
+            guard let checkedIn = document.data()?["checkedIn"] as? Bool else {
+                print("Checked in field not found in document")
+                return
+            }
+            
+            // Handle checkedIn value here
+            if checkedIn {
+                print("User is checked in")
+            } else {
+                print("User is not checked in")
+            }
+        }
+
+        
         let followingList = dataArray["following"] as! [String]
         cell.textLabel?.text = followingList[indexPath.row]
         cell.recievingUsername = followingList[indexPath.row]
         cell.sendingUsername = self.username
-        cell.checkInStatusLabel.text = "poo"
+        cell.listenForCheckinFlag()
         return cell
     }
 
