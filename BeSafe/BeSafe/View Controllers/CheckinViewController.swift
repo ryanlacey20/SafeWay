@@ -11,23 +11,23 @@ import UserNotifications
 import FirebaseAuth
 
 class CheckinViewController: UIViewController, UITableViewDataSource {
-    
 
     
     @IBOutlet weak var friendsTableView: UITableView!
     
     @IBOutlet weak var checkInStatusLabel: UILabel!
     
-    var dataArray = [String : Any]()
     var followingList = [String]()
-    var username = "empty"
+
     
     let db = FirebaseFirestore.Firestore.firestore()
     
     let refreshControl = UIRefreshControl()
 
     @objc func refreshData() {
-        getFollowingData()
+        Utilities.getFollowersList(forUser: Constants.currentUser.username) { followersUsernames in
+            self.followingList = followersUsernames
+        }
         friendsTableView.reloadData()
         refreshControl.endRefreshing()
     }
@@ -40,7 +40,10 @@ class CheckinViewController: UIViewController, UITableViewDataSource {
         
         friendsTableView.dataSource = self
         
-        getFollowingData()
+        Utilities.getFollowersList(forUser: Constants.currentUser.username) { followersUsernames in
+            self.followingList = followersUsernames
+            self.friendsTableView.reloadData()
+        }
         
         self.friendsTableView.reloadData()
 //        listenForCheckInFlag()
@@ -48,26 +51,28 @@ class CheckinViewController: UIViewController, UITableViewDataSource {
         
     }
 
-    func getFollowingData(){
-
-        db.collection("users").whereField("uid", isEqualTo: Auth.auth().currentUser?.uid).getDocuments { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    let data = document.data()
-                    self.dataArray = data
-                    self.followingList = data["following"] as! [String]
-                    self.username = data["username"] as! String
-                    self.friendsTableView.reloadData()
-                    
-                }
-            }
-        }
-    }
+//    func getFollowingData(){
+//
+//        db.collection("users").whereField("uid", isEqualTo: Auth.auth().currentUser?.uid).getDocuments { (querySnapshot, err) in
+//            if let err = err {
+//                print("Error getting documents: \(err)")
+//            } else {
+//                self.followingList = []
+//                for document in querySnapshot!.documents {
+//                    let data = document.data()
+//                    self.dataArray = data
+//                    self.followingList = data["following"] as! [String]
+//                    self.username = data["username"] as! String
+//                    self.friendsTableView.reloadData()
+//
+//                }
+//            }
+//        }
+//    }
 
     
 // TABLE SET UP
+
     func tableView(_ friendsTableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return followingList.count
     }
@@ -86,6 +91,7 @@ class CheckinViewController: UIViewController, UITableViewDataSource {
                 print("Error fetching document: \(error!)")
                 return
             }
+            print("document data", document.data())
             guard let checkedIn = document.data()?["checkedIn"] as? Bool else {
                 print("Checked in field not found in document")
                 return
@@ -98,14 +104,23 @@ class CheckinViewController: UIViewController, UITableViewDataSource {
                 print("User is not checked in")
             }
         }
-
         
-        let followingList = dataArray["following"] as! [String]
         cell.textLabel?.text = followingList[indexPath.row]
         cell.recievingUsername = followingList[indexPath.row]
-        cell.sendingUsername = self.username
+        cell.sendingUsername = Constants.currentUser.username
         cell.listenForCheckinFlag()
         return cell
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showFriendProfileSegue" {
+          if let indexPath = friendsTableView.indexPathForSelectedRow {
+              let selectedUser = followingList[indexPath.row]
+            if let detailVC = segue.destination as? FriendProfileViewController {
+              detailVC.username = selectedUser
+            }
+          }
+        }
+      }
 
 }

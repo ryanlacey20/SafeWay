@@ -72,13 +72,21 @@ class SignUpViewController: UIViewController {
                         }else{
                             //succesful user creation
                             let db = FirebaseFirestore.Firestore.firestore()
-                            db.collection("users").document(username).setData(["first_name": firstName, "last_name": lastName, "username": username, "uid": result!.user.uid, "following": []]) { (error) in
+                            //set data in the database
+                            db.collection("users").document(result!.user.uid).setData(["first_name": firstName, "last_name": lastName, "username": username,"checkedIn": false , "uid": result!.user.uid, "following": [], "sosContacts": [], "isSharinglocation": false]) { (error) in
                                 if error != nil{
                                     //TODO reconsider how this is handled
                                     self.showErrorMessage(message: "User has been created, error saving first name and last name")
                                 }
                             }
+                            db.collection("users").document(username).collection("checkInRequestsSent").addDocument(data: [:] )
+                            db.collection("users").document(username).collection("panicMessages").addDocument(data: [:] ){error in
+                                if let error = error{
+                                    print("error creating collection panicMessages \(error)")
+                                }
+                            }
 
+                            Constants.currentUser.username = username
                             self.goToWelcomeScreen()
                             
                         }

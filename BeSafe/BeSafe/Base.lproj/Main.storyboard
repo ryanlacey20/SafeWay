@@ -411,7 +411,7 @@
                                         <connections>
                                             <outlet property="checkInButton" destination="FSO-25-IrN" id="wuu-ZE-PfS"/>
                                             <outlet property="checkInStatusLabel" destination="hZq-Ti-mgH" id="KI2-Gq-jZ1"/>
-                                            <segue destination="nnl-ch-Pa6" kind="presentation" id="EUM-se-oed"/>
+                                            <segue destination="nnl-ch-Pa6" kind="presentation" identifier="showFriendProfileSegue" id="EUM-se-oed"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -454,20 +454,68 @@
             </objects>
             <point key="canvasLocation" x="3852.6717557251909" y="1022.5352112676056"/>
         </scene>
-        <!--View Controller-->
+        <!--Friend Profile View Controller-->
         <scene sceneID="qrh-dD-M2S">
             <objects>
-                <viewController id="nnl-ch-Pa6" sceneMemberID="viewController">
+                <viewController id="nnl-ch-Pa6" customClass="FriendProfileViewController" customModule="BeSafe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ISI-DH-lv1">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kz6-KM-7BA">
+                                <rect key="frame" x="20" y="74" width="69" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xgg-ZA-tPI">
+                                <rect key="frame" x="20" y="134" width="79" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-Z1-fnk">
+                                <rect key="frame" x="20" y="185" width="181" height="35"/>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Add As SOS Contact"/>
+                                <connections>
+                                    <action selector="toggleUserAsSOS:" destination="nnl-ch-Pa6" eventType="touchUpInside" id="7Tt-yk-QqB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7hs-Pl-xxI">
+                                <rect key="frame" x="282.66666666666669" y="185" width="90.333333333333314" height="35"/>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Unfollow"/>
+                                <connections>
+                                    <action selector="toggleFollowUser:" destination="nnl-ch-Pa6" eventType="touchUpInside" id="2lz-lb-DO2"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="ckf-rk-vXB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="AYU-Z1-fnk" firstAttribute="leading" secondItem="ckf-rk-vXB" secondAttribute="leading" constant="20" id="4ml-46-tfk"/>
+                            <constraint firstItem="kz6-KM-7BA" firstAttribute="top" secondItem="ckf-rk-vXB" secondAttribute="top" constant="15" id="Rhw-yn-X08"/>
+                            <constraint firstItem="ckf-rk-vXB" firstAttribute="trailing" secondItem="7hs-Pl-xxI" secondAttribute="trailing" constant="20" id="TOM-fX-1gI"/>
+                            <constraint firstItem="7hs-Pl-xxI" firstAttribute="top" secondItem="AYU-Z1-fnk" secondAttribute="top" id="UIa-YP-EAu"/>
+                            <constraint firstItem="Xgg-ZA-tPI" firstAttribute="top" secondItem="kz6-KM-7BA" secondAttribute="bottom" constant="30" id="eaR-qW-ICK"/>
+                            <constraint firstItem="Xgg-ZA-tPI" firstAttribute="leading" secondItem="ckf-rk-vXB" secondAttribute="leading" constant="20" id="iri-p4-lUs"/>
+                            <constraint firstItem="kz6-KM-7BA" firstAttribute="leading" secondItem="ISI-DH-lv1" secondAttribute="leading" constant="20" id="kHq-3U-OyM"/>
+                            <constraint firstItem="AYU-Z1-fnk" firstAttribute="top" secondItem="Xgg-ZA-tPI" secondAttribute="bottom" constant="30" id="lsg-oz-rOT"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="nameLabel" destination="kz6-KM-7BA" id="hSm-qB-a8a"/>
+                        <outlet property="toggleAsSOSContactButton" destination="AYU-Z1-fnk" id="vMV-de-TGw"/>
+                        <outlet property="toggleFollowButton" destination="7hs-Pl-xxI" id="C0a-aV-Equ"/>
+                        <outlet property="usernameLabel" destination="Xgg-ZA-tPI" id="LUz-Fe-dRe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IfT-ue-wGo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3853" y="1928"/>
+            <point key="canvasLocation" x="3852.6717557251909" y="1927.4647887323945"/>
         </scene>
         <!--Check-in Requests-->
         <scene sceneID="0gU-a2-7gs">
@@ -621,7 +669,7 @@ VGltZSBSZXF1ZXN0ZWQQOg
                     </view>
                     <navigationItem key="navigationItem" id="BXr-go-Rph">
                         <barButtonItem key="rightBarButtonItem" title="Friend Requests" style="plain" id="lWV-Do-10y">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="BxG-nq-cTv">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="BxG-nq-cTv">
                                 <rect key="frame" x="229.66666666666663" y="5" width="147.33333333333337" height="34.333333333333336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>

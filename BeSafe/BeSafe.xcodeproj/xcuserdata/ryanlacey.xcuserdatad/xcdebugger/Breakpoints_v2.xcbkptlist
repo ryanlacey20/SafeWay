@@ -7,81 +7,65 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "36A0EE71-42A0-418E-9024-98277524ACFF"
+            uuid = "FEFA37E1-FB33-4D10-8D34-92CDBC11DA95"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BeSafe/View Controllers/SignUp1ViewController.swift"
+            filePath = "BeSafe/View Controllers/LoginViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "7"
-            endingLineNumber = "7"
-            landmarkName = "unknown"
-            landmarkType = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "363F1324-0AD8-4F4E-9D2C-39E1A4CC31CF"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BeSafe/View Controllers/ViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13"
-            endingLineNumber = "13"
-            landmarkName = "loginButton(_:)"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "loginTapped(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FEFA37E1-FB33-4D10-8D34-92CDBC11DA95 - ef2a222d64366d77"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BeSafe.LoginViewController.loginTapped(Any) -&gt; ()"
+                  moduleName = "BeSafe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ryanlacey/Library/CloudStorage/OneDrive-UniversityCollegeCork/Year%204/FYP/BeSafe/BeSafe/BeSafe/View%20Controllers/LoginViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "1004">
+               </Location>
+               <Location
+                  uuid = "FEFA37E1-FB33-4D10-8D34-92CDBC11DA95 - 2f0ebea50ee4ae07"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.String&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BeSafe.LoginViewController.loginTapped(Any) -&gt; ()"
+                  moduleName = "BeSafe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ryanlacey/Library/CloudStorage/OneDrive-UniversityCollegeCork/Year%204/FYP/BeSafe/BeSafe/BeSafe/View%20Controllers/LoginViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "88">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "BDF4C01D-E4C5-4EF4-A83D-41066D2D42A8"
-            shouldBeEnabled = "No"
+            uuid = "83A3D4CA-C60F-4CCC-8782-BBF4885EC9B0"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BeSafe/View Controllers/ViewController.swift"
+            filePath = "BeSafe/View Controllers/GreetingViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
-            landmarkName = "loginButton(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B863D05C-AB03-40D2-B0FC-307233CFDC47"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BeSafe/View Controllers/ViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8852F0FA-A499-4B1E-8C2C-328522C6836F"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BeSafe/View Controllers/SignUpViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "SignUpViewController"
-            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

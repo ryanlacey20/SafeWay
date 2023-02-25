@@ -26,6 +26,8 @@ class CheckinTableViewCell: UITableViewCell {
                     print("Error : \(error)")
                 } else {
                     print("success.")
+                    //TO DO: when table is reloaded the button is reset to check-in becuase it is not using data from the database
+                
                     self.checkInButton.setTitle("Request Sent", for: .disabled)
                     self.checkInButton.setTitle("Check-In", for: .normal)
                     self.checkInButton.isEnabled = false

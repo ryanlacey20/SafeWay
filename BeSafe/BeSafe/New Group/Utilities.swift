@@ -22,27 +22,26 @@ class Utilities{
     
     //function to get the username of the current user
     static func getCurrentUserName(completion: @escaping (String?) -> Void) {
-        let db = FirebaseFirestore.Firestore.firestore()
-        db.collection("users").whereField("uid", isEqualTo: Auth.auth().currentUser!.uid).getDocuments { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-                completion(nil)
-            } else {
-                if let username = querySnapshot?.documents.first?.data()["username"] as? String {
-                    completion(username)
-                } else {
-                    completion("Welcome blank")
-                }
+        db.collection("users").document(Auth.auth().currentUser!.uid).getDocument { docSnapshot, error in
+            if let data = docSnapshot!.data(){
+                completion(data["username"] as? String)
+            }else {
+                completion("no username found")
             }
         }
     }
     
+    static func setUserInfoInConstants(username: String, completion: @escaping () -> Void) {
+        Constants.currentUser.username = username
+        Constants.currentUser.uid = Auth.auth().currentUser!.uid
+    }
+    
     //function which gets the users followed by the parameter "forUser"
-    static func getFollowersList(forUser: String, completion: @escaping (String?) -> Void) {
+    static func getFollowersList(forUser: String, completion: @escaping ([String]) -> Void) {
         db.collection("users").document(Constants.currentUser.username).getDocument { (user, error) in
             let data = user?.data()
-            let followersList = data?["following"] as? String
-            completion(followersList)
+            let followersList = data?["following"] as? [String]
+            completion(followersList!)
         }
     }
     
@@ -68,7 +67,35 @@ class Utilities{
             }
         }
     }
+    
+    static func unfollowUser(loggedInUser: String, userToUnfollow: String, completion: @escaping () -> Void){
+        self.getFollowersList(forUser: loggedInUser) { followersList in
+            var followersList = followersList
+            followersList.removeAll(where: {$0 == userToUnfollow})
+            db.collection("users").document(loggedInUser).updateData(["following" : followersList])
+        }
+    }
+    
+    static func followUser(forUser: String, followUser: String){
+        db.collection("users").document(forUser).updateData(["following": FieldValue.arrayUnion([followUser])])
+    }
 
-
+    static func getSOSContacts(forUser: String, completion: @escaping ([String]) -> Void){
+        db.collection("users").document(Constants.currentUser.username).getDocument { (user, error) in
+            let data = user?.data()
+            let sosContacts = data?["sosContacts"] as? [String]
+            completion(sosContacts ?? [])
+        }
+    }
+    
+    static func sendPanicMessageToUser(sendTo: String, fromUser: String){
+        let timestamp = Timestamp()
+        let date = timestamp.dateValue()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        let timestampString = dateFormatter.string(from: date)
+        let panicDocumentName = "\(timestampString) \(fromUser)"
+        db.collection("users").document(sendTo).collection("panicMessages").document(panicDocumentName).setData(["Test" : "Complete"])
+    }
     
 }

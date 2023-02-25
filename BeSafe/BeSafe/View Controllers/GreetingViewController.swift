@@ -31,11 +31,13 @@ class GreetingViewController: UIViewController {
         // Do any additional setup after loading the view.
         if Auth.auth().currentUser != nil {
           // User is signed in.
-            Utilities.getCurrentUserName { username in
-                Constants.currentUser.username = username!
+            Utilities.getCurrentUserName { (username) in
+                Utilities.setUserInfoInConstants(username: username!){
+                    self.goToWelcomeScreen()
+                }
+                
             }
-            Constants.currentUser.uid = Auth.auth().currentUser!.uid
-            self.goToWelcomeScreen()
+
             print("user is signed in")
         } else {
           // No user is signed in.

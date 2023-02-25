@@ -5,21 +5,35 @@
 //  Created by Ryan Lacey on 12/11/2022.
 //
 
+import Foundation
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import CoreLocation
 
-class HomeViewController: UIViewController {
+
+class HomeViewController: UIViewController, CLLocationManagerDelegate  {
+    
+    let locationManager = LocationServicesManager.shared
+
     let db = FirebaseFirestore.Firestore.firestore()
-    var emergencyUsernames: [String:Any] = [:]
+    var sosContacts: [String] = []
+
 
     @IBOutlet weak var panicButton: UIButton!
     
     @IBAction func panicButtonTouchUpInside(_ sender: Any) {
-        Utilities.getDataFromUser(user: Constants.currentUser.username) { data in
-            self.emergencyUsernames = data["emergecyUsernames"] as! [String : Any]
+        Utilities.getSOSContacts(forUser: Constants.currentUser.username) { data in
+            self.sosContacts = data
+//            for user in sosContacts{
+//                
+//            }
         }
         print("panic activated")
+        locationManager.startSharingLocation(withUser: "8b4zQ7Q3fPSPTCbCUp8U1GNUaPD2")
+        locationManager.isUserSharingLocation(forUser: Constants.currentUser.username) {(isUserSharingLocation) in
+            print(isUserSharingLocation,"<--- what this said")
+        }
 
     }
     
@@ -35,9 +49,9 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Utilities.getCurrentUserName { (name) in
-            self.nameLabel.text = name
-        }
+        
+        self.nameLabel.text = Constants.currentUser.username
+        
     }
     
 }

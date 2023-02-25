@@ -9,10 +9,11 @@ import UIKit
 import CoreData
 import Firebase
 import UserNotifications
+import CoreLocation
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
-    
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, CLLocationManagerDelegate {
+    var locationManager = CLLocationManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UNUserNotificationCenter.current().delegate = self
@@ -24,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     print("User has not granted permission to display notifications")
                 }
             }
+        locationManager.requestAlwaysAuthorization()
         FirebaseApp.configure();
         return true
     }
@@ -45,6 +47,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        locationManager.delegate = self
+        locationManager.startUpdatingLocation()
+    }
+    
+    func applicationWillResignActive(_ application: UIApplication) {
+        locationManager.startUpdatingLocation()
     }
 
     // MARK: - Core Data stack

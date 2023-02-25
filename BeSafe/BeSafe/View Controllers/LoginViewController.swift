@@ -26,7 +26,11 @@ class LoginViewController: UIViewController {
                 self.errorLabel.alpha = 1
             }else{
                 //Move to the app homescreen
-                self.backToHome()
+                Utilities.getCurrentUserName { username in
+                    Constants.currentUser.username = username!
+                    self.backToHome()
+                }
+
             }
         }
     }
