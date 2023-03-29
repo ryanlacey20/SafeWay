@@ -37,7 +37,7 @@ class LocationServicesManager: NSObject, CLLocationManagerDelegate {
         geoFire = GeoFire(firebaseRef: databaseRef.child("user_locations"))
     }
 
-    func startSharingLocation(sharedWith: String) {
+    func startSharingLocation(sharedWith: String, status: String) {
         Utilities.getCurrentUserName { sharingUsername in
             let location = self.currentLocation
 
@@ -50,13 +50,14 @@ class LocationServicesManager: NSObject, CLLocationManagerDelegate {
                                         "longitude": location?.coordinate.longitude,
                                         "expirationTime": expirationTime,
                                         "sharedAt" : timestamp,
-                                        "sharingUsername": sharingUsername,                                        "sharedWith": sosContacts
+                                        "sharingUsername": sharingUsername,                                        "sharedWith": sosContacts,
+                                        "staus": status
                     ] as [String: Any]
                     self.geoFire.setLocation(location!, forKey: sharingUsername) { error in
                         if let error = error {
                             print("Error setting location: \(error.localizedDescription)")
                         } else {
-                            self.db.collection("users").document((sharingUsername)).updateData(["isSharingLocation": true])
+                            self.db.collection("users").document((sharingUsername)).updateData(["isSharingLocation": true, "status": status])
                                                                  
                             self.databaseRef.child("user_locations").child(sharingUsername).setValue(userLocation)
                             print("Location shared successfully")

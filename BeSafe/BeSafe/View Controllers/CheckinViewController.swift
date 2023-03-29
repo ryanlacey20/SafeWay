@@ -123,7 +123,6 @@ class CheckinViewController: UIViewController, UITableViewDataSource {
             if let indexPath = friendsTableView.indexPathForSelectedRow {
                 let selectedUser = followingList[indexPath.row]
                 if let detailVC = segue.destination as? FriendProfileViewController {
-                    print("HERE", selectedUser)
                         detailVC.username = selectedUser
                     
                     

@@ -10,6 +10,7 @@ import Firebase
 class PanicMessagesTableViewCell: UITableViewCell {
     var cellUser : [String:Any] = [:]
     
+    @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var sentAtLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -17,6 +18,8 @@ class PanicMessagesTableViewCell: UITableViewCell {
 
         self.nameLabel.text = cellUser["sharingUsername"] as? String
         let timestamp = cellUser["sharedAt"] as! NSNumber
+        let status = cellUser["status"] as! String
+        self.statusLabel.text = status
         let myDate = Date(timeIntervalSince1970: timestamp.doubleValue)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-d-yyyy h:mm a"
