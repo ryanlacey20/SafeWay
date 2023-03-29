@@ -8,12 +8,12 @@
 import Foundation
 
 struct Constants {
-    struct Storyboard{
+    enum Storyboard {
         static let welcomePage = "TabBarController"
     }
-    struct currentUser{
+
+    enum currentUser {
         static var username = ""
         static var uid = ""
     }
-    
 }

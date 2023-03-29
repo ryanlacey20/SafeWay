@@ -5,11 +5,10 @@
 //  Created by Ryan Lacey on 07/11/2022.
 //
 
-import XCTest
 @testable import BeSafe
+import XCTest
 
 final class BeSafeTests: XCTestCase {
-
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -28,9 +27,8 @@ final class BeSafeTests: XCTestCase {
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
-        self.measure {
+        measure {
             // Put the code you want to measure the time of here.
         }
     }
-
 }
