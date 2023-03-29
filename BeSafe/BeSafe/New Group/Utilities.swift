@@ -52,6 +52,7 @@ class Utilities {
             }
         }
     }
+    
 
     // function which gets the users followed by the parameter "forUser"
     static func getFollowersList(forUser _: String, completion: @escaping ([String]) -> Void) {
@@ -101,11 +102,14 @@ class Utilities {
     }
 
     static func getSOSContacts(forUser: String, completion: @escaping ([String]) -> Void) {
-        db.collection("users").document((Auth.auth().currentUser?.displayName)!).getDocument { user, _ in
-            let data = user?.data()
-            let sosContacts = data?["sosContacts"] as? [String]
-            completion(sosContacts ?? [])
+        getCurrentUserName { username in
+            db.collection("users").document(username).getDocument { user, _ in
+                let data = user?.data()
+                let sosContacts = data?["sosContacts"] as? [String]
+                completion(sosContacts ?? [])
+            }
         }
+
     }
 
     static func sendPanicMessageToUser(sendTo: String, fromUser: String) {
@@ -118,21 +122,21 @@ class Utilities {
         db.collection("users").document(sendTo).collection("panicMessages").document(panicDocumentName).setData(["Test": "Complete"])
     }
     
-    static func getPanicMessages(completion: @escaping ([String:Any]) -> Void){
+    static func getPanicMessages(username: String, completion: @escaping ([String:Any]) -> Void){
         let databaseRef = Database.database(url: "https://besafe-fyp-default-rtdb.europe-west1.firebasedatabase.app").reference()
 
         databaseRef.child("user_locations").observe(.value, with: { snapshot in
             guard let data = snapshot.value as? [String: Any] else { return }
 
             
-            // Filter nodes where the sharedWith field contains the username "garfield"
             let filteredData = data.filter { (nodeData) in
                 let data = nodeData.value as! [String: Any]
                 guard let sharedWithData = data["sharedWith"] as? Array<String> else {
-                    getPanicMessages(completion: completion)
+                    getPanicMessages(username: username, completion: completion)
                     return false
                 }
-                return (sharedWithData.contains((Auth.auth().currentUser?.displayName)!))
+                    return (sharedWithData.contains(username))
+                
             }
             completion(filteredData)
         })

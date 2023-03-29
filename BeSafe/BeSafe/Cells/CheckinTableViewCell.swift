@@ -10,7 +10,6 @@ import UIKit
 
 class CheckinTableViewCell: UITableViewCell {
     var recievingUsername = ""
-    var sendingUsername = ""
     var hasCheckedin = false
     let db = FirebaseFirestore.Firestore.firestore()
 
@@ -19,14 +18,16 @@ class CheckinTableViewCell: UITableViewCell {
     @IBOutlet var checkInButton: UIButton!
 
     @IBAction func checkInButtonPressed(_: Any) {
-        db.collection("users").document(recievingUsername).collection("checkInRequests").document(sendingUsername).setData(["sender": sendingUsername, "timestamp": Timestamp()])
-        db.collection("users").document(sendingUsername).collection("checkInRequestsSent").document(recievingUsername).setData(["reciever": recievingUsername, "timestamp": Timestamp(), "checkedIn": false]) { error in
-            if let error = error {
-                print("Error : \(error)")
-            } else {
-                print("success.")
-                // TO DO: when table is reloaded the button is reset to check-in becuase it is not using data from the database
-                
+        Utilities.getCurrentUserName { sendingUsername in
+            self.db.collection("users").document(self.recievingUsername).collection("checkInRequests").document(sendingUsername).setData(["sender": sendingUsername, "timestamp": Timestamp()])
+            self.db.collection("users").document(sendingUsername).collection("checkInRequestsSent").document(self.recievingUsername).setData(["reciever": self.recievingUsername, "timestamp": Timestamp(), "checkedIn": false]) { error in
+                if let error = error {
+                    print("Error : \(error)")
+                } else {
+                    print("success.")
+                    // TO DO: when table is reloaded the button is reset to check-in becuase it is not using data from the database
+                    
+                }
             }
         }
     }
@@ -79,28 +80,30 @@ class CheckinTableViewCell: UITableViewCell {
 //    }
 
     func listenForCheckinFlag(){
-        let docRef = db.collection("users").document(sendingUsername).collection("checkInRequestsSent").document(recievingUsername)
-        docRef.addSnapshotListener{docSnapshot, error in
-            if docSnapshot!.exists{
-                let data = docSnapshot?.data()
-                self.hasCheckedin = data!["checkedIn"] as! Bool
-                
-                if  self.hasCheckedin == false {
-                    let timestamp = data?["timestamp"] as! Timestamp
-                    let timestampAsDate = timestamp.dateValue()
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "HH:mm, dd/MM/yy"
-                    let dateString = dateFormatter.string(from: timestampAsDate)
-                    self.checkInStatusLabel.text = "\(self.recievingUsername) has not responded to checkin sent at \(dateString)"
-                } else {
-                    let timestamp = data?["timestamp"] as! Timestamp
-                    let timestampAsDate = timestamp.dateValue()
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "HH:mm, dd/MM/yy"
-                    let dateString = dateFormatter.string(from: timestampAsDate)
-                    self.checkInStatusLabel.text = "\(self.recievingUsername) checked in as safe at \(dateString)"
-                }
-            } else { self.checkInStatusLabel.text = "Check in request has not been sent to \(self.recievingUsername)"}
+        Utilities.getCurrentUserName { sendingUsername in
+            let docRef = self.db.collection("users").document(sendingUsername).collection("checkInRequestsSent").document(self.recievingUsername)
+            docRef.addSnapshotListener{docSnapshot, error in
+                if docSnapshot!.exists{
+                    let data = docSnapshot?.data()
+                    self.hasCheckedin = data!["checkedIn"] as! Bool
+                    
+                    if  self.hasCheckedin == false {
+                        let timestamp = data?["timestamp"] as! Timestamp
+                        let timestampAsDate = timestamp.dateValue()
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "HH:mm, dd/MM/yy"
+                        let dateString = dateFormatter.string(from: timestampAsDate)
+                        self.checkInStatusLabel.text = "\(self.recievingUsername) has not responded to checkin sent at \(dateString)"
+                    } else {
+                        let timestamp = data?["timestamp"] as! Timestamp
+                        let timestampAsDate = timestamp.dateValue()
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "HH:mm, dd/MM/yy"
+                        let dateString = dateFormatter.string(from: timestampAsDate)
+                        self.checkInStatusLabel.text = "\(self.recievingUsername) checked in as safe at \(dateString)"
+                    }
+                } else { self.checkInStatusLabel.text = "Check in request has not been sent to \(self.recievingUsername)"}
+            }
         }
     }
     

@@ -36,10 +36,13 @@ class PanicMessagesViewController: UIViewController, UITableViewDataSource {
         
         panicMessagesTable.dataSource = self
         super.viewDidLoad()
-        Utilities.getPanicMessages(){locationsShared in
-            self.panicMessages = locationsShared
-            self.panicMessagesTable.reloadData()
+        Utilities.getCurrentUserName { username in
+            Utilities.getPanicMessages(username: username){locationsShared in
+                self.panicMessages = locationsShared
+                self.panicMessagesTable.reloadData()
+            }
         }
+
         
 
         
