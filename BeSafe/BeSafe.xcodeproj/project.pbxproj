@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9C01EEBF29241CC90056E1E6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C01EEBE29241CC90056E1E6 /* HomeViewController.swift */; };
+		9C1276F029A7E74600933CCE /* LocationServicesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1276EF29A7E74500933CCE /* LocationServicesManager.swift */; };
+		9C12771129AAB95F00933CCE /* GeoFire in Frameworks */ = {isa = PBXBuildFile; productRef = 9C12771029AAB95F00933CCE /* GeoFire */; };
+		9C12771329AAB95F00933CCE /* GeoFireUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 9C12771229AAB95F00933CCE /* GeoFireUtils */; };
 		9C200DD229905B4E00DBB127 /* CheckinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C200DD129905B4E00DBB127 /* CheckinViewController.swift */; };
 		9C4430DC29A2EB8E00854382 /* FriendRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4430DB29A2EB8E00854382 /* FriendRequestsViewController.swift */; };
 		9C4430E029A2F46000854382 /* PanicMessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4430DF29A2F46000854382 /* PanicMessagesTableViewCell.swift */; };
@@ -18,6 +21,9 @@
 		9C89F8F72996DC5600D17D3C /* CheckinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C89F8F62996DC5600D17D3C /* CheckinTableViewCell.swift */; };
 		9C8F78212998546400588A8A /* CheckInRequestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F78202998546400588A8A /* CheckInRequestsTableViewCell.swift */; };
 		9C8F78232998548A00588A8A /* CheckInRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F78222998548A00588A8A /* CheckInRequestsViewController.swift */; };
+		9C94E52A29A43A30005B74D1 /* FriendProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C94E52929A43A30005B74D1 /* FriendProfileViewController.swift */; };
+		9C9A738629D4D58200C96975 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9C9A738529D4D58200C96975 /* FirebaseStorage */; };
+		9CA8916729D230C5002CE6F5 /* PanicMessageMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA8916629D230C5002CE6F5 /* PanicMessageMapViewController.swift */; };
 		9CB92BD729205BFD007ABF1B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CB92BD629205BFD007ABF1B /* GoogleService-Info.plist */; };
 		9CC0126A292037CA004AE0F3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC01269292037CA004AE0F3 /* LoginViewController.swift */; };
 		9CE9DDFA291983A0004163B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE9DDF9291983A0004163B2 /* AppDelegate.swift */; };
@@ -59,6 +65,7 @@
 
 /* Begin PBXFileReference section */
 		9C01EEBE29241CC90056E1E6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		9C1276EF29A7E74500933CCE /* LocationServicesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServicesManager.swift; sourceTree = "<group>"; };
 		9C200DD129905B4E00DBB127 /* CheckinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinViewController.swift; sourceTree = "<group>"; };
 		9C4430DB29A2EB8E00854382 /* FriendRequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestsViewController.swift; sourceTree = "<group>"; };
 		9C4430DF29A2F46000854382 /* PanicMessagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanicMessagesTableViewCell.swift; sourceTree = "<group>"; };
@@ -69,6 +76,8 @@
 		9C89F8F62996DC5600D17D3C /* CheckinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinTableViewCell.swift; sourceTree = "<group>"; };
 		9C8F78202998546400588A8A /* CheckInRequestsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInRequestsTableViewCell.swift; sourceTree = "<group>"; };
 		9C8F78222998548A00588A8A /* CheckInRequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInRequestsViewController.swift; sourceTree = "<group>"; };
+		9C94E52929A43A30005B74D1 /* FriendProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileViewController.swift; sourceTree = "<group>"; };
+		9CA8916629D230C5002CE6F5 /* PanicMessageMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanicMessageMapViewController.swift; sourceTree = "<group>"; };
 		9CB92BD629205BFD007ABF1B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9CC01269292037CA004AE0F3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9CE9DDF6291983A0004163B2 /* BeSafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeSafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,7 +102,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C12771129AAB95F00933CCE /* GeoFire in Frameworks */,
+				9C12771329AAB95F00933CCE /* GeoFireUtils in Frameworks */,
 				9CF92FC429216EDA009B7224 /* FirebaseFirestoreSwift in Frameworks */,
+				9C9A738629D4D58200C96975 /* FirebaseStorage in Frameworks */,
 				9CF92FC029216ED9009B7224 /* FirebaseDatabaseSwift in Frameworks */,
 				9CF92FC829216EDA009B7224 /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
 				9CF92FC229216EDA009B7224 /* FirebaseFirestore in Frameworks */,
@@ -120,6 +132,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C1276FF29A90DF900933CCE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9C89F8F52996DC3300D17D3C /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +161,8 @@
 				9C8F78222998548A00588A8A /* CheckInRequestsViewController.swift */,
 				9C4430DB29A2EB8E00854382 /* FriendRequestsViewController.swift */,
 				9C4430E329A2F58E00854382 /* PanicMessagesViewController.swift */,
+				9CA8916629D230C5002CE6F5 /* PanicMessageMapViewController.swift */,
+				9C94E52929A43A30005B74D1 /* FriendProfileViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -153,6 +174,7 @@
 				9CE9DE12291983A3004163B2 /* BeSafeTests */,
 				9CE9DE1C291983A3004163B2 /* BeSafeUITests */,
 				9CE9DDF7291983A0004163B2 /* Products */,
+				9C1276FF29A90DF900933CCE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -206,6 +228,7 @@
 			children = (
 				9CF92FB829213DF1009B7224 /* Utilities.swift */,
 				9C5F6E0C29217B43005097BB /* Constants.swift */,
+				9C1276EF29A7E74500933CCE /* LocationServicesManager.swift */,
 			);
 			name = Helpers;
 			path = "New Group";
@@ -235,6 +258,9 @@
 				9CF92FC329216EDA009B7224 /* FirebaseFirestoreSwift */,
 				9CF92FC529216EDA009B7224 /* FirebaseInAppMessaging-Beta */,
 				9CF92FC729216EDA009B7224 /* FirebaseInAppMessagingSwift-Beta */,
+				9C12771029AAB95F00933CCE /* GeoFire */,
+				9C12771229AAB95F00933CCE /* GeoFireUtils */,
+				9C9A738529D4D58200C96975 /* FirebaseStorage */,
 			);
 			productName = BeSafe;
 			productReference = 9CE9DDF6291983A0004163B2 /* BeSafe.app */;
@@ -310,6 +336,7 @@
 			mainGroup = 9CE9DDED291983A0004163B2;
 			packageReferences = (
 				9CF92FBA29216ED9009B7224 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				9C12770F29AAB95E00933CCE /* XCRemoteSwiftPackageReference "geofire-objc" */,
 			);
 			productRefGroup = 9CE9DDF7291983A0004163B2 /* Products */;
 			projectDirPath = "";
@@ -361,13 +388,16 @@
 				9C89F8F72996DC5600D17D3C /* CheckinTableViewCell.swift in Sources */,
 				9C4430E029A2F46000854382 /* PanicMessagesTableViewCell.swift in Sources */,
 				9C8F78212998546400588A8A /* CheckInRequestsTableViewCell.swift in Sources */,
+				9C1276F029A7E74600933CCE /* LocationServicesManager.swift in Sources */,
 				9CE9DE04291983A0004163B2 /* BeSafe.xcdatamodeld in Sources */,
 				9CC0126A292037CA004AE0F3 /* LoginViewController.swift in Sources */,
 				9CE9DDFA291983A0004163B2 /* AppDelegate.swift in Sources */,
 				9CE9DDFC291983A0004163B2 /* SceneDelegate.swift in Sources */,
 				9C01EEBF29241CC90056E1E6 /* HomeViewController.swift in Sources */,
 				9C83B5F529798FEF008CD7D4 /* AddFriendsViewController.swift in Sources */,
+				9C94E52A29A43A30005B74D1 /* FriendProfileViewController.swift in Sources */,
 				9C83B5F329798AC7008CD7D4 /* GreetingViewController.swift in Sources */,
+				9CA8916729D230C5002CE6F5 /* PanicMessageMapViewController.swift in Sources */,
 				9C200DD229905B4E00DBB127 /* CheckinViewController.swift in Sources */,
 				9CF92FB929213DF1009B7224 /* Utilities.swift in Sources */,
 				9C8F78232998548A00588A8A /* CheckInRequestsViewController.swift in Sources */,
@@ -717,6 +747,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		9C12770F29AAB95E00933CCE /* XCRemoteSwiftPackageReference "geofire-objc" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/geofire-objc.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		9CF92FBA29216ED9009B7224 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -728,6 +766,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		9C12771029AAB95F00933CCE /* GeoFire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9C12770F29AAB95E00933CCE /* XCRemoteSwiftPackageReference "geofire-objc" */;
+			productName = GeoFire;
+		};
+		9C12771229AAB95F00933CCE /* GeoFireUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9C12770F29AAB95E00933CCE /* XCRemoteSwiftPackageReference "geofire-objc" */;
+			productName = GeoFireUtils;
+		};
+		9C9A738529D4D58200C96975 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9CF92FBA29216ED9009B7224 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
 		9CF92FBB29216ED9009B7224 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9CF92FBA29216ED9009B7224 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

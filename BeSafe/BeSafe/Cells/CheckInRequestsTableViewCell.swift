@@ -5,31 +5,28 @@
 //  Created by Ryan Lacey on 11/02/2023.
 //
 
-import UIKit
-import FirebaseFirestore
 import FirebaseAuth
+import FirebaseFirestore
+import UIKit
 
 protocol CheckInRequestsTableViewCellDelegate: AnyObject {
     func checkInButtonTapped(senderUsername: String)
 }
 
 class CheckInRequestsTableViewCell: UITableViewCell {
-    
     let db = FirebaseFirestore.Firestore.firestore()
     var userUsername = String()
 
     var senderUsername = String()
     weak var delegate: CheckInRequestsTableViewCellDelegate?
-    
-    @IBAction func checkInAsSafeButton(_ sender: Any) {
-        
-        delegate?.checkInButtonTapped(senderUsername: senderUsername)
 
+    @IBAction func checkInAsSafeButton(_: Any) {
+        delegate?.checkInButtonTapped(senderUsername: senderUsername)
     }
-    
-    @IBOutlet weak var senderLabel: UILabel!
-    
-    @IBOutlet weak var timeRequestedLabel: UILabel!
+
+    @IBOutlet var senderLabel: UILabel!
+
+    @IBOutlet var timeRequestedLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -40,5 +37,4 @@ class CheckInRequestsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }
