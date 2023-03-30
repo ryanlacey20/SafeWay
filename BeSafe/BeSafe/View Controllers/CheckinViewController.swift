@@ -38,11 +38,14 @@ class CheckinViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         friendsTableView.refreshControl = refreshControl
+        
+        
 
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
 
         friendsTableView.dataSource = self
         Utilities.getCurrentUserName() { username in
+            
             self.sendingUsername = username
             Utilities.getFollowersList(forUser: (username)) { followersUsernames in
                 self.followingList = followersUsernames
@@ -95,7 +98,7 @@ class CheckinViewController: UIViewController, UITableViewDataSource {
                 print("Error fetching document: \(error!)")
                 return
             }
-            print("document data", document.data())
+
             guard let checkedIn = document.data()?["checkedIn"] as? Bool else {
                 print("Checked in field not found in document")
                 return

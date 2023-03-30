@@ -20,6 +20,7 @@ class LocationServicesManager: NSObject, CLLocationManagerDelegate {
     private var currentLocation: CLLocation?
     private var userLocationsRef: DatabaseReference!
     private var db: Firestore!
+    private var timestamp = Double()
 
     override private init() {
         super.init()
@@ -41,17 +42,18 @@ class LocationServicesManager: NSObject, CLLocationManagerDelegate {
         Utilities.getCurrentUserName { sharingUsername in
             let location = self.currentLocation
 
-            let timestamp = NSDate().timeIntervalSince1970
-            let expirationTime = timestamp + 3600 // share location for 1 hour
+            self.timestamp = NSDate().timeIntervalSince1970
+            let expirationTime = self.timestamp + 3600 // share location for 1 hour
             Utilities.getCurrentUserName { username in
                 Utilities.getSOSContacts(forUser: (username)){(sosContacts) in
                     
                     let userLocation = ["latitude": location?.coordinate.latitude,
                                         "longitude": location?.coordinate.longitude,
                                         "expirationTime": expirationTime,
-                                        "sharedAt" : timestamp,
-                                        "sharingUsername": sharingUsername,                                        "sharedWith": sosContacts,
-                                        "staus": status
+                                        "sharedAt" : self.timestamp,
+                                        "sharingUsername": sharingUsername,
+                                        "sharedWith": sosContacts,
+                                        "status": status
                     ] as [String: Any]
                     self.geoFire.setLocation(location!, forKey: sharingUsername) { error in
                         if let error = error {
@@ -64,7 +66,7 @@ class LocationServicesManager: NSObject, CLLocationManagerDelegate {
 
                             self.timer?.invalidate()
                             self.timer = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true) { _ in
-                                self.updateLocation(withUser: (sharingUsername), timestamp: expirationTime)
+                                self.updateLocation(withUser: (sharingUsername), expirationTimestamp: expirationTime, timestamp: self.timestamp, status: status)
                             }
                         }
                     }
@@ -80,22 +82,25 @@ class LocationServicesManager: NSObject, CLLocationManagerDelegate {
 
     func stopSharingLocation(withUser username: String) {
         Utilities.getCurrentUserName { sharingUsername in
-            self.geoFire.removeKey(sharingUsername)
-            self.databaseRef.child("user_locations").child(username).removeValue()
+
+            self.databaseRef.child("user_locations").child(sharingUsername).removeValue()
             self.timer?.invalidate()
             self.db.collection("users").document(sharingUsername).updateData(["isSharingLocation": false])
         }
         
     }
 
-    func updateLocation(withUser username: String, timestamp: Double) {
+    func updateLocation(withUser username: String, expirationTimestamp: Double, timestamp: Double, status: String) {
         guard let location = currentLocation else { return }
         Utilities.getSOSContacts(forUser: username) { sosContacts in
             let userLocation = ["latitude": location.coordinate.latitude,
                                 "longitude": location.coordinate.longitude,
-                                "expirationTime": timestamp,
+                                "expirationTime": expirationTimestamp,
+                                "sharedAt": timestamp,
                                 "sharingUsername": username,
-                                "sharedWith": sosContacts ] as [String: Any]
+                                "sharedWith": sosContacts,
+                                "status": status] as [String: Any]
+            
 
             self.geoFire.setLocation(location, forKey: username) { error in
                 if let error = error {

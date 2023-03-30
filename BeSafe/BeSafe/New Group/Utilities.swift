@@ -82,10 +82,10 @@ class Utilities {
     }
 
     static func getDataFromUser(user: String, completion: @escaping ([String: Any]) -> Void) {
-        db.collection("users").document(user).getDocument { doc, _ in
-            if let data = doc?.data() {
-                completion(data)
-            }
+        let trimmedUser = user.trimmingCharacters(in: .whitespacesAndNewlines)
+        db.collection("users").document(trimmedUser).getDocument { docSnapshot, error in
+            let data = docSnapshot!.data()
+            completion(data!)
         }
     }
 
@@ -141,4 +141,28 @@ class Utilities {
             completion(filteredData)
         })
     }
+    static func isPanicMessages(username: String, completion: @escaping (Any) -> Void){
+        let databaseRef = Database.database(url: "https://besafe-fyp-default-rtdb.europe-west1.firebasedatabase.app").reference()
+
+        databaseRef.child("user_locations").observe(.value, with: { snapshot in
+            guard let data = snapshot.value as? [String: Any] else { return }
+            
+            
+            let filteredData = data.filter { (nodeData) in
+                let data = nodeData.value as! [String: Any]
+                guard let sharedWithData = data["sharedWith"] as? Array<String> else {
+                    getPanicMessages(username: username, completion: completion)
+                    return false
+                }
+                return (sharedWithData.contains(username))
+                
+            }
+            if filteredData as? [String: String] == [:] {
+                completion(false)
+            }else {
+                completion(true)
+            }
+        })
+    }
+    
 }

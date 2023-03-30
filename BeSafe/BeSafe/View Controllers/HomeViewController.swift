@@ -19,18 +19,29 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     var isSharingLocation = Bool()
     var username: String?
 
+    @IBOutlet weak var confirmationLabel: UILabel!
     @IBOutlet var panicButton: UIButton!
     @IBOutlet weak var panicButtonErrorLabel: UILabel!
     
     @IBAction func markHomeSafe(_ sender: Any) {
+        confirmationLabel.isHidden = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+            self.confirmationLabel.isHidden = true
+        }
         Utilities.getCurrentUserName { username in
+
             self.db.collection("users").document(username).updateData(["markedHomeAt" : Timestamp()])
         }
         
     }
     
     @IBOutlet weak var amberPanicButtonErrorLabel: UILabel!
+    
     func panicButtonPressed(status:String){
+        logOutButton.isEnabled = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 8.0) {
+            self.logOutButton.isEnabled = true
+        }
         Utilities.getCurrentUserName(){ username in
             Utilities.getSOSContacts(forUser: username) { data in
                 self.sosContacts = data
@@ -90,12 +101,22 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet var logOutButton: UIButton!
 
+    @IBOutlet weak var panicMessagesLabel: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
+        
+        self.confirmationLabel.isHidden = true
         self.panicButtonErrorLabel.isHidden = true
         self.amberPanicButtonErrorLabel.isHidden = true
         Utilities.getCurrentUserName { username in
+//            Utilities.isPanicMessages(username: username) { panicMessageExists in
+//                print("panicmessages", panicMessageExists)
+//                if panicMessageExists is Bool {
+//                    self.panicMessagesLabel.setImage(UIImage(named: "circlebadge"), for: .normal)
+//                }
+//            }
             self.username = username
             self.nameLabel.text = username
             self.db.collection("users").document(username).addSnapshotListener { snapshot, error in
@@ -113,7 +134,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
                         self.panicButton.layer.cornerRadius = 10
                         
                         //reset amber buton
-                        self.amberPanicButtonOutlet.setTitle("Amber Panic button \nWarns SOS Contacts", for: .normal)
+                        self.amberPanicButtonOutlet.setTitle("Amber Panic button", for: .normal)
                         let red2 = CGFloat(255) / 255.0
                         let green2 = CGFloat(255) / 255.0
                         let blue2 = CGFloat(204) / 255.0
@@ -127,7 +148,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
                         
                         // reset red button
                         //red
-                        self.panicButton.setTitle("Red Panic button \nAlerts SOS Contacts", for: .normal)
+                        self.panicButton.setTitle("Red Panic Button", for: .normal)
                         let red1 = CGFloat(252) / 255.0
                         let green1 = CGFloat(200) / 255.0
                         let blue1 = CGFloat(200) / 255.0
@@ -137,7 +158,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
                     }
                 } else {
                     //red
-                    self.panicButton.setTitle("Red Panic button \nAlerts SOS Contacts", for: .normal)
+                    self.panicButton.setTitle("Red Panic Button", for: .normal)
                     let red1 = CGFloat(252) / 255.0
                     let green1 = CGFloat(200) / 255.0
                     let blue1 = CGFloat(200) / 255.0
@@ -146,7 +167,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
                     self.panicButton.layer.cornerRadius = 10
                     
                     //amber
-                    self.amberPanicButtonOutlet.setTitle("Amber Panic button \nWarns SOS Contacts", for: .normal)
+                    self.amberPanicButtonOutlet.setTitle("Amber Panic Button", for: .normal)
                     let red2 = CGFloat(255) / 255.0
                     let green2 = CGFloat(255) / 255.0
                     let blue2 = CGFloat(204) / 255.0

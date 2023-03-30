@@ -15,11 +15,17 @@ class PanicMessagesTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     
     func cellReloaded(){
-
-        self.nameLabel.text = cellUser["sharingUsername"] as? String
+        print("cell user", cellUser["sharingUsername"])
+        let name = cellUser["sharingUsername"] as! String
+        self.nameLabel.text = name
         let timestamp = cellUser["sharedAt"] as! NSNumber
         let status = cellUser["status"] as! String
-        self.statusLabel.text = status
+        self.statusLabel.text = "Panic level: \(status)" 
+        if status == "red"{
+            statusLabel.textColor = .red
+        } else {
+            statusLabel.textColor = .yellow
+        }
         let myDate = Date(timeIntervalSince1970: timestamp.doubleValue)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-d-yyyy h:mm a"
@@ -32,6 +38,9 @@ class PanicMessagesTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+            self.cellReloaded()
+        }
 
     }
 

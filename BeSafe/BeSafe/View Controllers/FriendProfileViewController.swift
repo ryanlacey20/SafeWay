@@ -61,9 +61,12 @@ class FriendProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        Utilities.getDataFromUser(user: username) { data in
+
+        self.usernameLabel.text = self.username
+        Utilities.getDataFromUser(user: self.username){ data in
+
             self.nameLabel.text = data["first_name"] as? String
-            self.usernameLabel.text = self.username
+            
         }
 
         // Listener for document of selected user
