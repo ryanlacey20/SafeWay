@@ -40,11 +40,14 @@ class CheckinViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         friendsTableView.refreshControl = refreshControl
         
-        Utilities.getCheckInRequestData { requests in
-            if requests.isEmpty {
+        Utilities.doesCheckInRequestExist{ bool in
+
+            if !bool {
                 Utilities.unreadItemStatus(itemToSetImage: self.checkInButtonOutlet, read: true)
+                print("it shoudl be working")
             }else {
                 Utilities.unreadItemStatus(itemToSetImage: self.checkInButtonOutlet, read: false)
+                print("this means it shoudl be showing full crrilc")
             }
         }
 

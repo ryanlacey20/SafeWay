@@ -181,28 +181,70 @@ class Utilities {
     }
     
     static func getCheckInRequestData(completion: @escaping ([String: Any]) -> Void) {
-        var requestsList = [String:Any]()
-        requestsList = [:]
-        self.getCurrentUserName { username in
-            db.collection("users").document(username).collection("checkInRequests").addSnapshotListener { querySnapshot, error in
-                if error != nil{
-                    print("error in Utiltities.getCheckinRequests", error)
+         var requestsList = [String:Any]()
+         requestsList = [:]
+         self.getCurrentUserName { username in
+             db.collection("users").document(username).collection("checkInRequests").addSnapshotListener { querySnapshot, error in
+                 if error != nil{
+                     print("error in Utiltities.getCheckinRequests", error)
+                 } else {
+                     guard let listOfRequests = querySnapshot?.documents else {
+                         print("error in getCheckInRequests guard let statement")
+                         return
+                     }
+                     for request in listOfRequests {
+                         let requestData = request.data()
+                         requestsList[requestData["sender"] as! String] = requestData
+                         
+                     }
+                     completion(requestsList)
+                 }
+             }
+         }
+
+         }
+    
+//    static func doesCheckInRequestExist(completion: @escaping (Bool) -> Void){
+//        getCurrentUserName { username in
+//            db.collection("users").document(username).addSnapshotListener { docSanpshot, error in
+//                if (error != nil) {
+//                    print("error in doescheckinrequestsexits")
+//                }else{
+//                    db.collection("users").document(username).collection("checkInRequests").getDocuments { querySnapshot, error in
+//                        if querySnapshot!.isEmpty{
+//                            completion(false)
+//                        }else{
+//                            completion(true)
+//                        }
+//                    }
+//                }
+//            }
+//        }
+    static func doesCheckInRequestExist( completion: @escaping (Bool) -> Void) {
+        getCurrentUserName { username in
+            let db = Firestore.firestore()
+            let userDocRef = db.collection("users").document(username)
+
+            userDocRef.collection("checkInRequests").addSnapshotListener { (snapshot, error) in
+                if error != nil {
+                    print("Error fetching subcollection: \(error!)")
+                    completionHandler(false)
+                    return
+                }
+
+                if snapshot?.isEmpty == true {
+                    // The subcollection does not exist
+                    completion(false)
                 } else {
-                    guard let listOfRequests = querySnapshot?.documents else {
-                        print("error in getCheckInRequests guard let statement")
-                        return
-                    }
-                    for request in listOfRequests {
-                        let requestData = request.data()
-                        requestsList[requestData["sender"] as! String] = requestData
-                        
-                    }
-                    completion(requestsList)
+                    // The subcollection exists
+                    completion(true)
                 }
             }
         }
+    
 
-        }
+        
+    }
     
     static func unreadItemStatus(itemToSetImage: UIButton, read: Bool){
         if !read{

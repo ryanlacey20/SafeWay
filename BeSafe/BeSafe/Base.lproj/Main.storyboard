@@ -541,7 +541,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9Tl-7O-Qhe">
-                                <rect key="frame" x="0.0" y="160" width="393" height="609"/>
+                                <rect key="frame" x="0.0" y="139.33333333333331" width="393" height="629.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="106" id="84T-ff-uV0" customClass="CheckinTableViewCell" customModule="BeSafe" customModuleProvider="target">
@@ -593,15 +593,15 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqd-fR-TRh">
-                                <rect key="frame" x="298" y="103" width="95" height="55"/>
+                                <rect key="frame" x="298" y="103" width="95" height="34.333333333333343"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="person.fill.questionmark" catalog="system" imagePlacement="top" title="Requests"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Requests"/>
                                 <connections>
                                     <segue destination="6Yg-Tt-Iu0" kind="show" id="Lbd-M2-grf"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Following" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y32-Ve-LHy">
-                                <rect key="frame" x="10" y="103" width="112" height="57"/>
+                                <rect key="frame" x="10" y="103" width="112" height="36.333333333333343"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -730,7 +730,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Esx-OE-5at">
-                                                    <rect key="frame" x="30" y="73" width="74" height="11"/>
+                                                    <rect key="frame" x="30" y="63" width="74" height="21"/>
                                                     <string key="text" base64-UTF8="YES">
 VGltZSBSZXF1ZXN0ZWQQOg
 </string>
@@ -748,6 +748,7 @@ VGltZSBSZXF1ZXN0ZWQQOg
                                                 </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="Esx-OE-5at" firstAttribute="top" secondItem="aMy-rA-a4M" secondAttribute="bottom" constant="20" id="PMu-2Q-RSs"/>
                                                 <constraint firstItem="nl0-Az-N5A" firstAttribute="trailing" secondItem="m12-hB-aBz" secondAttribute="trailingMargin" id="Ui1-Gg-O0P"/>
                                                 <constraint firstItem="Esx-OE-5at" firstAttribute="bottom" secondItem="m12-hB-aBz" secondAttribute="bottomMargin" constant="-5" id="c1n-G5-8gv"/>
                                                 <constraint firstItem="nl0-Az-N5A" firstAttribute="centerY" secondItem="aMy-rA-a4M" secondAttribute="centerY" id="fKX-7e-S93"/>
@@ -972,7 +973,6 @@ VGltZSBSZXF1ZXN0ZWQQOg
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="person.2.crop.square.stack" catalog="system" width="112" height="128"/>
         <image name="person.badge.plus" catalog="system" width="128" height="125"/>
-        <image name="person.fill.questionmark" catalog="system" width="128" height="102"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

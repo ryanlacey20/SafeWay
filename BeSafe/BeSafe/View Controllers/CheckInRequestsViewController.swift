@@ -20,7 +20,6 @@ class CheckInRequestsViewController: UIViewController, UITableViewDataSource, Ch
         super.viewDidLoad()
         Utilities.getCheckInRequestData(){ requestsList in
             self.requests = requestsList
-            print("requests", self.requests)
             self.checkInRequestsTable.reloadData()
         }
         checkInRequestsTable.dataSource = self

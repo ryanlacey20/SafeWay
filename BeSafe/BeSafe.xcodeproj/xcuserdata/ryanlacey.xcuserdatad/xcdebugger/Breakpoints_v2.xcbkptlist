@@ -14,8 +14,8 @@
             filePath = "BeSafe/View Controllers/CheckinViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "BeSafe/View Controllers/CheckinViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,8 +62,8 @@
             filePath = "BeSafe/View Controllers/CheckinViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -146,6 +146,54 @@
             endingLineNumber = "25"
             landmarkName = "checkInAsSafeButton(_:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "13D6C77D-E0FF-4B3D-9623-53335EC43F4B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BeSafe/View Controllers/CheckinViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "13D6C77D-E0FF-4B3D-9623-53335EC43F4B - 616464abeebf8e6d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BeSafe.CheckinViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "BeSafe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ryanlacey/Library/CloudStorage/OneDrive-UniversityCollegeCork/Year%204/FYP/BeSafe/BeSafe/BeSafe/View%20Controllers/CheckinViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "318">
+               </Location>
+               <Location
+                  uuid = "13D6C77D-E0FF-4B3D-9623-53335EC43F4B - be04b181348302f0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool) -&gt; () in BeSafe.CheckinViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "BeSafe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ryanlacey/Library/CloudStorage/OneDrive-UniversityCollegeCork/Year%204/FYP/BeSafe/BeSafe/BeSafe/View%20Controllers/CheckinViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "74">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
