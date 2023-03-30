@@ -15,12 +15,11 @@ class PanicMessagesTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     
     func cellReloaded(){
-        print("cell user", cellUser["sharingUsername"])
         let name = cellUser["sharingUsername"] as! String
         self.nameLabel.text = name
         let timestamp = cellUser["sharedAt"] as! NSNumber
         let status = cellUser["status"] as! String
-        self.statusLabel.text = "Panic level: \(status)" 
+        self.statusLabel.text = "Panic level: \(status)"
         if status == "red"{
             statusLabel.textColor = .red
         } else {
