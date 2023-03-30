@@ -15,6 +15,7 @@ class CheckinTableViewCell: UITableViewCell {
 
     @IBOutlet var checkInStatusLabel: UILabel!
 
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet var checkInButton: UIButton!
 
     @IBAction func checkInButtonPressed(_: Any) {

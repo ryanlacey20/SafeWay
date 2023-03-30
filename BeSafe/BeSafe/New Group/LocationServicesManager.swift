@@ -66,7 +66,7 @@ class LocationServicesManager: NSObject, CLLocationManagerDelegate {
 
                             self.timer?.invalidate()
                             self.timer = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true) { _ in
-                                self.updateLocation(withUser: (sharingUsername), expirationTimestamp: expirationTime, timestamp: self.timestamp, status: status)
+                                self.updateLocation(expirationTimestamp: expirationTime, timestamp: self.timestamp, status: status)
                             }
                         }
                     }
@@ -80,7 +80,7 @@ class LocationServicesManager: NSObject, CLLocationManagerDelegate {
 
     }
 
-    func stopSharingLocation(withUser username: String) {
+    func stopSharingLocation() {
         Utilities.getCurrentUserName { sharingUsername in
 
             self.databaseRef.child("user_locations").child(sharingUsername).removeValue()
@@ -90,27 +90,30 @@ class LocationServicesManager: NSObject, CLLocationManagerDelegate {
         
     }
 
-    func updateLocation(withUser username: String, expirationTimestamp: Double, timestamp: Double, status: String) {
+    func updateLocation( expirationTimestamp: Double, timestamp: Double, status: String) {
         guard let location = currentLocation else { return }
-        Utilities.getSOSContacts(forUser: username) { sosContacts in
-            let userLocation = ["latitude": location.coordinate.latitude,
-                                "longitude": location.coordinate.longitude,
-                                "expirationTime": expirationTimestamp,
-                                "sharedAt": timestamp,
-                                "sharingUsername": username,
-                                "sharedWith": sosContacts,
-                                "status": status] as [String: Any]
-            
+        Utilities.getCurrentUserName { sharingUsername in
+            Utilities.getSOSContacts(forUser: sharingUsername) { sosContacts in
+                let userLocation = ["latitude": location.coordinate.latitude,
+                                    "longitude": location.coordinate.longitude,
+                                    "expirationTime": expirationTimestamp,
+                                    "sharedAt": timestamp,
+                                    "sharingUsername": sharingUsername,
+                                    "sharedWith": sosContacts,
+                                    "status": status] as [String: Any]
+                
 
-            self.geoFire.setLocation(location, forKey: username) { error in
-                if let error = error {
-                    print("Error updating location: \(error.localizedDescription)")
-                } else {
-                    self.databaseRef.child("user_locations").child(username).setValue(userLocation)
-                    print("Location updated successfully")
+                self.geoFire.setLocation(location, forKey: sharingUsername) { error in
+                    if let error = error {
+                        print("Error updating location: \(error.localizedDescription)")
+                    } else {
+                        self.databaseRef.child("user_locations").child(sharingUsername).setValue(userLocation)
+                        print("Location updated successfully")
+                    }
                 }
             }
         }
+       
  
     }
 

@@ -125,10 +125,9 @@ class Utilities {
     static func getPanicMessages(username: String, completion: @escaping ([String:Any]) -> Void){
         let databaseRef = Database.database(url: "https://besafe-fyp-default-rtdb.europe-west1.firebasedatabase.app").reference()
 
-        databaseRef.child("user_locations").observe(.value, with: { snapshot in
+        databaseRef.child("user_locations").queryOrdered(byChild: "sharedAt").observe(.value, with: { snapshot in
             guard let data = snapshot.value as? [String: Any] else { return }
 
-            
             let filteredData = data.filter { (nodeData) in
                 let data = nodeData.value as! [String: Any]
                 guard let sharedWithData = data["sharedWith"] as? Array<String> else {
@@ -136,11 +135,27 @@ class Utilities {
                     return false
                 }
                     return (sharedWithData.contains(username))
-                
+
             }
-            completion(filteredData)
+            if !filteredData.isEmpty{
+
+
+
+                let sortedDict = filteredData.sorted(by: {
+                    (($0.value as? [String: Any])?["sharedAt"] as? Double ?? 0) >
+                    (($1.value as? [String: Any])?["sharedAt"] as? Double ?? 0)
+                })
+
+                completion( Dictionary(uniqueKeysWithValues: sortedDict))
+            }
+
+            if filteredData.isEmpty{
+                completion(filteredData)
+            }
         })
     }
+
+
     static func isPanicMessages(username: String, completion: @escaping (Any) -> Void){
         let databaseRef = Database.database(url: "https://besafe-fyp-default-rtdb.europe-west1.firebasedatabase.app").reference()
 
@@ -164,5 +179,39 @@ class Utilities {
             }
         })
     }
+    
+    static func getCheckInRequestData(completion: @escaping ([String: Any]) -> Void) {
+        var requestsList = [String:Any]()
+        requestsList = [:]
+        self.getCurrentUserName { username in
+            db.collection("users").document(username).collection("checkInRequests").addSnapshotListener { querySnapshot, error in
+                if error != nil{
+                    print("error in Utiltities.getCheckinRequests", error)
+                } else {
+                    guard let listOfRequests = querySnapshot?.documents else {
+                        print("error in getCheckInRequests guard let statement")
+                        return
+                    }
+                    for request in listOfRequests {
+                        let requestData = request.data()
+                        requestsList[requestData["sender"] as! String] = requestData
+                        
+                    }
+                    completion(requestsList)
+                }
+            }
+        }
+
+        }
+    
+    static func unreadItemStatus(itemToSetImage: UIButton, read: Bool){
+        if !read{
+            itemToSetImage.setImage(UIImage(systemName: "circlebadge.fill")?.withTintColor(UIColor.red), for: .normal)
+        }else{
+            itemToSetImage.setImage(UIImage(systemName: "circlebadge")?.withTintColor(UIColor.red), for: .normal)
+            
+        }
+    }
+
     
 }

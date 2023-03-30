@@ -13,12 +13,13 @@ import UserNotifications
 class CheckinViewController: UIViewController, UITableViewDataSource {
     @IBOutlet var friendsTableView: UITableView!
 
-    @IBOutlet var checkInStatusLabel: UILabel!
     
     var sendingUsername = String()
 
     var followingList = [String]()
 
+    @IBOutlet weak var checkInButtonOutlet: UIButton!
+    
     let db = FirebaseFirestore.Firestore.firestore()
 
     let refreshControl = UIRefreshControl()
@@ -39,7 +40,13 @@ class CheckinViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         friendsTableView.refreshControl = refreshControl
         
-        
+        Utilities.getCheckInRequestData { requests in
+            if requests.isEmpty {
+                Utilities.unreadItemStatus(itemToSetImage: self.checkInButtonOutlet, read: true)
+            }else {
+                Utilities.unreadItemStatus(itemToSetImage: self.checkInButtonOutlet, read: false)
+            }
+        }
 
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
 
@@ -56,29 +63,11 @@ class CheckinViewController: UIViewController, UITableViewDataSource {
 
 
         friendsTableView.reloadData()
-//        listenForCheckInFlag()
+
     }
 
-//    func getFollowingData(){
-//
-//        db.collection("users").whereField("uid", isEqualTo: Auth.auth().currentUser?.uid).getDocuments { (querySnapshot, err) in
-//            if let err = err {
-//                print("Error getting documents: \(err)")
-//            } else {
-//                self.followingList = []
-//                for document in querySnapshot!.documents {
-//                    let data = document.data()
-//                    self.dataArray = data
-//                    self.followingList = data["following"] as! [String]
-//                    self.username = data["username"] as! String
-//                    self.friendsTableView.reloadData()
-//
-//                }
-//            }
-//        }
-//    }
 
-    // TABLE SET UP
+
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return followingList.count
@@ -87,37 +76,36 @@ class CheckinViewController: UIViewController, UITableViewDataSource {
     func tableView(_ friendsTableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = friendsTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CheckinTableViewCell
 
-        let db = Firestore.firestore()
-        let usersCollectionRef = db.collection("users")
-        let usernameDocRef = usersCollectionRef.document("username")
-        let checkInRequestsSentCollRef = usernameDocRef.collection("checkInRequestsSent")
-        let recievingUserDocRef = checkInRequestsSentCollRef.document("recievinguser")
+//        let db = Firestore.firestore()
+//        let usersCollectionRef = db.collection("users")
+//        let usernameDocRef = usersCollectionRef.document("username")
+//        let checkInRequestsSentCollRef = usernameDocRef.collection("checkInRequestsSent")
+//        let recievingUserDocRef = checkInRequestsSentCollRef.document("recievinguser")
+//
+//        recievingUserDocRef.addSnapshotListener { documentSnapshot, error in
+//            guard let document = documentSnapshot else {
+//                print("Error fetching document: \(error!)")
+//                return
+//            }
+//
+//            guard let checkedIn = document.data()?["checkedIn"] as? Bool else {
+//                print("Checked in field not found in document")
+//                return
+//            }
+//
+//            // Handle checkedIn value here
+//            if checkedIn {
+//                print("User is checked in")
+//            } else {
+//                print("User is not checked in")
+//            }
+//        }
 
-        recievingUserDocRef.addSnapshotListener { documentSnapshot, error in
-            guard let document = documentSnapshot else {
-                print("Error fetching document: \(error!)")
-                return
-            }
-
-            guard let checkedIn = document.data()?["checkedIn"] as? Bool else {
-                print("Checked in field not found in document")
-                return
-            }
-
-            // Handle checkedIn value here
-            if checkedIn {
-                print("User is checked in")
-            } else {
-                print("User is not checked in")
-            }
-        }
-
-        cell.textLabel?.text = followingList[indexPath.row]
+        cell.nameLabel.text = followingList[indexPath.row]
         cell.recievingUsername = followingList[indexPath.row]
 
         
         cell.listenForCheckinFlag()
-8
         return cell
     }
 

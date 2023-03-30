@@ -11,13 +11,18 @@ import UIKit
 
 class CheckInRequestsViewController: UIViewController, UITableViewDataSource, CheckInRequestsTableViewCellDelegate {
     @IBOutlet var checkInRequestsTable: UITableView!
-    var username = ""
+
     let db = FirebaseFirestore.Firestore.firestore()
     var requests = [String: Any]()
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        getRequestData()
+        Utilities.getCheckInRequestData(){ requestsList in
+            self.requests = requestsList
+            print("requests", self.requests)
+            self.checkInRequestsTable.reloadData()
+        }
         checkInRequestsTable.dataSource = self
         checkInRequestsTable.reloadData()
 
@@ -25,50 +30,31 @@ class CheckInRequestsViewController: UIViewController, UITableViewDataSource, Ch
     }
 
     func checkInButtonTapped(senderUsername: String) {
-        let checkInRequestsRef = db.collection("users").document(username).collection("checkInRequests").document(senderUsername)
+        Utilities.getCurrentUserName { username in
+            let checkInRequestsRef = self.db.collection("users").document(username).collection("checkInRequests").document(senderUsername)
 
-        checkInRequestsRef.delete { error in
-            if let error = error {
-                print("Error deleting document: \(error)")
-            } else {
-                print("Document successfully deleted.")
-                self.getRequestData()
-                self.checkInRequestsTable.reloadData()
-                self.db.collection("users").document(senderUsername).collection("checkInRequestsSent").document(self.username).setData(["checkedIn": true, "reciever": self.username, "timestamp": Timestamp()])
-            }
-        }
-    }
-
-    func getRequestData() {
-        requests = [:]
-        db.collection("users").whereField("uid", isEqualTo: Auth.auth().currentUser?.uid).getDocuments { querySnapshot, err in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    let data = document.data()
-                    self.username = data["username"] as! String
-
-                    let checkInRequestsRef = self.db.collection("users").document(self.username).collection("checkInRequests")
-
-                    checkInRequestsRef.getDocuments { querySnapshot, err in
-                        if err != nil {
-                            print("Error getting documents")
-                        } else {
-                            guard let documents = querySnapshot?.documents else { return }
-                            for document in documents {
-                                let docData = document.data()
-                                self.requests[docData["sender"] as! String] = docData
-                                self.checkInRequestsTable.reloadData()
-                            }
-                        }
+            checkInRequestsRef.delete { error in
+                if let error = error {
+                    print("Error deleting document: \(error)")
+                } else {
+                    print("Document successfully deleted.")
+                    Utilities.getCheckInRequestData(){requestsList in
+                        self.requests = requestsList
+                        
+                        self.checkInRequestsTable.reloadData()
                     }
+                    self.checkInRequestsTable.reloadData()
+                    self.db.collection("users").document(senderUsername).collection("checkInRequestsSent").document(username).setData(["checkedIn": true, "reciever": username, "timestamp": Timestamp()])
                 }
             }
         }
+
     }
 
+
+
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+        
         return requests.count
     }
 
@@ -93,9 +79,14 @@ class CheckInRequestsViewController: UIViewController, UITableViewDataSource, Ch
 
         cell.senderLabel.text = selectedRequest["sender"] as? String
         cell.senderUsername = selectedRequest["sender"] as? String ?? ""
-        cell.userUsername = username
+        Utilities.getCurrentUserName { username in
+            cell.userUsername = username
+//            self.usernameLoaded = true
+//            self.checkInRequestsTable.reloadData()
+        }
+
 
         cell.timeRequestedLabel.text = dateAsString
-        return cell
+            return cell
     }
 }

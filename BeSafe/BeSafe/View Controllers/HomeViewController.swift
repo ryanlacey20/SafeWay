@@ -67,7 +67,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
                                 let data = docSnapshot?.data()
                                 let currentStatus = data!["status"]
                                 if currentStatus as! String == status {
-                                    self.locationManager.stopSharingLocation(withUser: user)
+                                    self.locationManager.stopSharingLocation()
                                 } else {
                                     self.locationManager.startSharingLocation(sharedWith: user, status: status)
                                     
@@ -111,12 +111,13 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         self.panicButtonErrorLabel.isHidden = true
         self.amberPanicButtonErrorLabel.isHidden = true
         Utilities.getCurrentUserName { username in
-//            Utilities.isPanicMessages(username: username) { panicMessageExists in
-//                print("panicmessages", panicMessageExists)
-//                if panicMessageExists is Bool {
-//                    self.panicMessagesLabel.setImage(UIImage(named: "circlebadge"), for: .normal)
-//                }
-//            }
+            Utilities.getPanicMessages(username: username) { panicMessages in
+                if !panicMessages.isEmpty {
+                    self.panicMessagesLabel.setImage(UIImage(systemName: "circlebadge.fill")?.withTintColor(UIColor.red), for: .normal)
+                    
+
+                } else{                     self.panicMessagesLabel.setImage(UIImage(systemName: "circlebadge")?.withTintColor(UIColor.red), for: .normal)}
+            }
             self.username = username
             self.nameLabel.text = username
             self.db.collection("users").document(username).addSnapshotListener { snapshot, error in

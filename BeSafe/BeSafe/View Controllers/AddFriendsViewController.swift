@@ -88,7 +88,7 @@ class AddFriendsViewController: UIViewController {
     @IBAction func onFollowPress(_: Any) {
         if userFoundFlag == true {
             let currUserRef = db.collection("users").document(username)
-            currUserRef.updateData(["following": FieldValue.arrayUnion([usernameSearch.text])])
+            currUserRef.updateData(["following": FieldValue.arrayUnion([self.usernameSearch.text!.trimmingCharacters(in: .whitespacesAndNewlines)])])
             self.followUserbutton.isEnabled = false
             self.followUserbutton.setTitle("Following", for: .disabled)
         }
