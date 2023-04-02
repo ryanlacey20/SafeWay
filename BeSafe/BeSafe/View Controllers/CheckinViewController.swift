@@ -29,6 +29,7 @@ class CheckinViewController: UIViewController, UITableViewDataSource {
             Utilities.getFollowersList(forUser: username) { followersUsernames in
                 self.followingList = followersUsernames
                 self.friendsTableView.reloadData()
+
                 self.refreshControl.endRefreshing()
             }
         }
@@ -79,34 +80,11 @@ class CheckinViewController: UIViewController, UITableViewDataSource {
     func tableView(_ friendsTableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = friendsTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CheckinTableViewCell
 
-//        let db = Firestore.firestore()
-//        let usersCollectionRef = db.collection("users")
-//        let usernameDocRef = usersCollectionRef.document("username")
-//        let checkInRequestsSentCollRef = usernameDocRef.collection("checkInRequestsSent")
-//        let recievingUserDocRef = checkInRequestsSentCollRef.document("recievinguser")
-//
-//        recievingUserDocRef.addSnapshotListener { documentSnapshot, error in
-//            guard let document = documentSnapshot else {
-//                print("Error fetching document: \(error!)")
-//                return
-//            }
-//
-//            guard let checkedIn = document.data()?["checkedIn"] as? Bool else {
-//                print("Checked in field not found in document")
-//                return
-//            }
-//
-//            // Handle checkedIn value here
-//            if checkedIn {
-//                print("User is checked in")
-//            } else {
-//                print("User is not checked in")
-//            }
-//        }
-
-        cell.nameLabel.text = followingList[indexPath.row]
+        cell.nameLabel.setTitle(followingList[indexPath.row], for: .disabled)
         cell.recievingUsername = followingList[indexPath.row]
 
+        cell.checkHomeSafe()
+        print("this ran")
         
         cell.listenForCheckinFlag()
         return cell
@@ -118,6 +96,7 @@ class CheckinViewController: UIViewController, UITableViewDataSource {
                 let selectedUser = followingList[indexPath.row]
                 if let detailVC = segue.destination as? FriendProfileViewController {
                         detailVC.username = selectedUser
+                    
                     
                     
                 }

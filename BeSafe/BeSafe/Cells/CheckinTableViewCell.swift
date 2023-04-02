@@ -9,13 +9,20 @@ import FirebaseFirestore
 import UIKit
 
 class CheckinTableViewCell: UITableViewCell {
-    var recievingUsername = ""
+    var recievingUsername = ""{
+        didSet {
+            // This code block is called automatically after the value of myVariable is set or changed
+            showHomeSafe()
+            checkHomeSafe()
+        }
+}
     var hasCheckedin = false
     let db = FirebaseFirestore.Firestore.firestore()
 
     @IBOutlet var checkInStatusLabel: UILabel!
 
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var nameLabel: UIButton!
+    
     @IBOutlet var checkInButton: UIButton!
 
     @IBAction func checkInButtonPressed(_: Any) {
@@ -33,52 +40,37 @@ class CheckinTableViewCell: UITableViewCell {
         }
     }
 
-    // watcher
-//    func listenForCheckinFlag() {
-//        let docRef = db.collection("users").document(sendingUsername).collection("checkInRequestsSent")
-//        docRef.addSnapshotListener { querySnapshot, error in
-//            if let error = error {
-//                print("Error getting documents: \(error)")
-//            } else {
-//                for document in querySnapshot!.documents {
-//                    if document.exists {
-//                        // Get the value of the flag from the document data
-//                        let data = document.data()
-//                        let flagValue = data["checkedIn"] as? Bool ?? nil
-//
-//                        // Check if the flag has changed
-//                        if flagValue != self.flag && flagValue != nil {
-//                            self.flag = flagValue!
-//
-//                            // Execute different actions depending on the value of the flag
-//                            if self.flag {
-//                                // Flag is true
-//                                // Execute your first action
-//                            } else {
-//                                // Flag is false
-//                                // Execute your second action
-//                                self.checkInButton.isEnabled = true
-//                                self.db.collection("users").document(self.sendingUsername).collection("checkInRequestsSent").document(self.recievingUsername).getDocument(completion: { document, error in
-//                                    if let error = error {
-//                                        print("Error : \(error)")
-//                                    } else {
-//                                        let data = document?.data()
-//
-//                                        let timestamp = data?["timestamp"] as! Timestamp
-//                                        let timestampAsDate = timestamp.dateValue()
-//                                        let dateFormatter = DateFormatter()
-//                                        dateFormatter.dateFormat = "HH:mm, dd/MM/yy"
-//                                        let dateString = dateFormatter.string(from: timestampAsDate)
-//                                        self.checkInStatusLabel.text = "Last Checked-in as safe at: \(dateString)"
-//                                    }
-//                                })
-//                            }
-//                        }
-//                    } else {self.checkInStatusLabel.text = "A check in request has not been sent"}
-//                }
-//            }
-//        }
-//    }
+    func showHomeSafe() {
+        
+        self.db.collection("users").document(recievingUsername).addSnapshotListener { documentSnapshot, _ in
+            if documentSnapshot?.get("markedHomeAt") as? Timestamp == nil {
+                self.nameLabel.setImage(nil, for: .disabled)
+            } else if let markedHomeAt = documentSnapshot?.get("markedHomeAt") as? Timestamp {
+                let currentTime = Timestamp(date: Date())
+                if currentTime.seconds > markedHomeAt.seconds + 10 {
+                    // More than 10 seconds have passed since markedHomeAt was set
+                    self.nameLabel.setImage(nil, for: .disabled)
+                } else {self.nameLabel.setImage(UIImage(systemName: "house"), for: .disabled)}
+            }
+            }
+        }
+    
+    func checkHomeSafe(){
+        self.db.collection("users").document(recievingUsername).getDocument { documentSnapshot, error in
+            if documentSnapshot?.get("markedHomeAt") as? Timestamp == nil {
+                self.nameLabel.setImage(nil, for: .disabled)
+            } else if let markedHomeAt = documentSnapshot?.get("markedHomeAt") as? Timestamp {
+                let currentTime = Timestamp(date: Date())
+                if currentTime.seconds > markedHomeAt.seconds + 10 {
+                    // More than 10 seconds have passed since markedHomeAt was set
+                    self.nameLabel.setImage(nil, for: .disabled)
+                } else {self.nameLabel.setImage(UIImage(systemName: "house"), for: .disabled)}
+            }
+            
+        }
+    }
+    
+
 
     func listenForCheckinFlag(){
         Utilities.getCurrentUserName { sendingUsername in
@@ -110,7 +102,8 @@ class CheckinTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        self.nameLabel.setTitleColor(UIColor.label, for: .disabled)
+        
         // Initialization code
     }
 
