@@ -228,7 +228,7 @@ class Utilities {
             userDocRef.collection("checkInRequests").addSnapshotListener { (snapshot, error) in
                 if error != nil {
                     print("Error fetching subcollection: \(error!)")
-                    completionHandler(false)
+                    completion(false)
                     return
                 }
 

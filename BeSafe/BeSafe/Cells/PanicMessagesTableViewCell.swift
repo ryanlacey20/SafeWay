@@ -23,7 +23,7 @@ class PanicMessagesTableViewCell: UITableViewCell {
         if status == "red"{
             statusLabel.textColor = .red
         } else {
-            statusLabel.textColor = .yellow
+            statusLabel.textColor = .systemOrange
         }
         let myDate = Date(timeIntervalSince1970: timestamp.doubleValue)
         let dateFormatter = DateFormatter()
