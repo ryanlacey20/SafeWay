@@ -70,6 +70,20 @@ class CheckinViewController: UIViewController, UITableViewDataSource {
 
     }
 
+    func checkHomeSafe(recievingUsername: String, completion: @escaping (Bool) -> Void){
+        self.db.collection("users").document(recievingUsername).getDocument { documentSnapshot, error in
+            if documentSnapshot?.get("markedHomeAt") as? Timestamp == nil {
+                completion(false)
+            } else if let markedHomeAt = documentSnapshot?.get("markedHomeAt") as? Timestamp {
+                let currentTime = Timestamp(date: Date())
+                if currentTime.seconds > markedHomeAt.seconds + 10 {
+                    // More than 10 seconds have passed since markedHomeAt was set
+                    completion(false)
+                } else {completion(true)}
+            }
+            
+        }
+    }
 
 
 
@@ -83,7 +97,9 @@ class CheckinViewController: UIViewController, UITableViewDataSource {
         cell.nameLabel.setTitle(followingList[indexPath.row], for: .disabled)
         cell.recievingUsername = followingList[indexPath.row]
 
-        cell.checkHomeSafe()
+        checkHomeSafe(recievingUsername: followingList[indexPath.row]){markedHomeBool in
+            cell.isMarkedHome = markedHomeBool
+        }
         print("this ran")
         
         cell.listenForCheckinFlag()

@@ -11,11 +11,20 @@ import UIKit
 class CheckinTableViewCell: UITableViewCell {
     var recievingUsername = ""{
         didSet {
-            // This code block is called automatically after the value of myVariable is set or changed
             showHomeSafe()
-            checkHomeSafe()
         }
 }
+    
+    var isMarkedHome = false{
+        didSet{
+            if isMarkedHome{
+                self.nameLabel.setImage(UIImage(systemName: "house"), for: .disabled)
+            }
+            else{
+                self.nameLabel.setImage(nil, for: .disabled)
+            }
+        }
+    }
     var hasCheckedin = false
     let db = FirebaseFirestore.Firestore.firestore()
 
@@ -55,20 +64,6 @@ class CheckinTableViewCell: UITableViewCell {
             }
         }
     
-    func checkHomeSafe(){
-        self.db.collection("users").document(recievingUsername).getDocument { documentSnapshot, error in
-            if documentSnapshot?.get("markedHomeAt") as? Timestamp == nil {
-                self.nameLabel.setImage(nil, for: .disabled)
-            } else if let markedHomeAt = documentSnapshot?.get("markedHomeAt") as? Timestamp {
-                let currentTime = Timestamp(date: Date())
-                if currentTime.seconds > markedHomeAt.seconds + 10 {
-                    // More than 10 seconds have passed since markedHomeAt was set
-                    self.nameLabel.setImage(nil, for: .disabled)
-                } else {self.nameLabel.setImage(UIImage(systemName: "house"), for: .disabled)}
-            }
-            
-        }
-    }
     
 
 

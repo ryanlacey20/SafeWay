@@ -13,7 +13,7 @@ import UIKit
 
 class HomeViewController: UIViewController, CLLocationManagerDelegate {
     let locationManager = LocationServicesManager.shared
-
+    var panicMessageLength = 0
     let db = FirebaseFirestore.Firestore.firestore()
     var sosContacts: [String] = []
     var isSharingLocation = Bool()
@@ -112,6 +112,10 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         self.amberPanicButtonErrorLabel.isHidden = true
         Utilities.getCurrentUserName { username in
             Utilities.getPanicMessages(username: username) { panicMessages in
+                if self.panicMessageLength < panicMessages.count{
+                    self.sendPanicMessageNotification()
+                }
+                self.panicMessageLength = panicMessages.count
                 if !panicMessages.isEmpty {
                     self.panicMessagesLabel.setImage(UIImage(systemName: "circlebadge.fill")?.withTintColor(UIColor.red), for: .normal)
                     
@@ -181,4 +185,16 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         }
 
     }
+    
+    func sendPanicMessageNotification() {
+        let content = UNMutableNotificationContent()
+        content.title = "🚨Panic Message Recieved🚨"
+        content.body = "A user has shared a panic message"
+        content.sound = UNNotificationSound.default
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        let request = UNNotificationRequest(identifier: "localNotification", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+
 }
