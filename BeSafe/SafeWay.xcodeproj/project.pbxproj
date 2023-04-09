@@ -80,7 +80,7 @@
 		9CA8916629D230C5002CE6F5 /* PanicMessageMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanicMessageMapViewController.swift; sourceTree = "<group>"; };
 		9CB92BD629205BFD007ABF1B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9CC01269292037CA004AE0F3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		9CE9DDF6291983A0004163B2 /* BeSafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeSafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CE9DDF6291983A0004163B2 /* SafeWay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafeWay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CE9DDF9291983A0004163B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CE9DDFB291983A0004163B2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9CE9DDFD291983A0004163B2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -89,9 +89,9 @@
 		9CE9DE05291983A2004163B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9CE9DE08291983A2004163B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9CE9DE0A291983A2004163B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9CE9DE0F291983A3004163B2 /* BeSafeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeSafeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CE9DE0F291983A3004163B2 /* SafeWayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SafeWayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CE9DE13291983A3004163B2 /* BeSafeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeSafeTests.swift; sourceTree = "<group>"; };
-		9CE9DE19291983A3004163B2 /* BeSafeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeSafeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CE9DE19291983A3004163B2 /* SafeWayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SafeWayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CE9DE1D291983A3004163B2 /* BeSafeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeSafeUITests.swift; sourceTree = "<group>"; };
 		9CE9DE1F291983A3004163B2 /* BeSafeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeSafeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9CF92FB829213DF1009B7224 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -181,9 +181,9 @@
 		9CE9DDF7291983A0004163B2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9CE9DDF6291983A0004163B2 /* BeSafe.app */,
-				9CE9DE0F291983A3004163B2 /* BeSafeTests.xctest */,
-				9CE9DE19291983A3004163B2 /* BeSafeUITests.xctest */,
+				9CE9DDF6291983A0004163B2 /* SafeWay.app */,
+				9CE9DE0F291983A3004163B2 /* SafeWayTests.xctest */,
+				9CE9DE19291983A3004163B2 /* SafeWayUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -237,9 +237,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9CE9DDF5291983A0004163B2 /* BeSafe */ = {
+		9CE9DDF5291983A0004163B2 /* SafeWay */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9CE9DE23291983A3004163B2 /* Build configuration list for PBXNativeTarget "BeSafe" */;
+			buildConfigurationList = 9CE9DE23291983A3004163B2 /* Build configuration list for PBXNativeTarget "SafeWay" */;
 			buildPhases = (
 				9CE9DDF2291983A0004163B2 /* Sources */,
 				9CE9DDF3291983A0004163B2 /* Frameworks */,
@@ -249,7 +249,7 @@
 			);
 			dependencies = (
 			);
-			name = BeSafe;
+			name = SafeWay;
 			packageProductDependencies = (
 				9CF92FBB29216ED9009B7224 /* FirebaseAuth */,
 				9CF92FBD29216ED9009B7224 /* FirebaseDatabase */,
@@ -263,12 +263,12 @@
 				9C9A738529D4D58200C96975 /* FirebaseStorage */,
 			);
 			productName = BeSafe;
-			productReference = 9CE9DDF6291983A0004163B2 /* BeSafe.app */;
+			productReference = 9CE9DDF6291983A0004163B2 /* SafeWay.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9CE9DE0E291983A3004163B2 /* BeSafeTests */ = {
+		9CE9DE0E291983A3004163B2 /* SafeWayTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9CE9DE26291983A3004163B2 /* Build configuration list for PBXNativeTarget "BeSafeTests" */;
+			buildConfigurationList = 9CE9DE26291983A3004163B2 /* Build configuration list for PBXNativeTarget "SafeWayTests" */;
 			buildPhases = (
 				9CE9DE0B291983A3004163B2 /* Sources */,
 				9CE9DE0C291983A3004163B2 /* Frameworks */,
@@ -279,14 +279,14 @@
 			dependencies = (
 				9CE9DE11291983A3004163B2 /* PBXTargetDependency */,
 			);
-			name = BeSafeTests;
+			name = SafeWayTests;
 			productName = BeSafeTests;
-			productReference = 9CE9DE0F291983A3004163B2 /* BeSafeTests.xctest */;
+			productReference = 9CE9DE0F291983A3004163B2 /* SafeWayTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		9CE9DE18291983A3004163B2 /* BeSafeUITests */ = {
+		9CE9DE18291983A3004163B2 /* SafeWayUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9CE9DE29291983A3004163B2 /* Build configuration list for PBXNativeTarget "BeSafeUITests" */;
+			buildConfigurationList = 9CE9DE29291983A3004163B2 /* Build configuration list for PBXNativeTarget "SafeWayUITests" */;
 			buildPhases = (
 				9CE9DE15291983A3004163B2 /* Sources */,
 				9CE9DE16291983A3004163B2 /* Frameworks */,
@@ -297,9 +297,9 @@
 			dependencies = (
 				9CE9DE1B291983A3004163B2 /* PBXTargetDependency */,
 			);
-			name = BeSafeUITests;
+			name = SafeWayUITests;
 			productName = BeSafeUITests;
-			productReference = 9CE9DE19291983A3004163B2 /* BeSafeUITests.xctest */;
+			productReference = 9CE9DE19291983A3004163B2 /* SafeWayUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -325,7 +325,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9CE9DDF1291983A0004163B2 /* Build configuration list for PBXProject "BeSafe" */;
+			buildConfigurationList = 9CE9DDF1291983A0004163B2 /* Build configuration list for PBXProject "SafeWay" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -342,9 +342,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9CE9DDF5291983A0004163B2 /* BeSafe */,
-				9CE9DE0E291983A3004163B2 /* BeSafeTests */,
-				9CE9DE18291983A3004163B2 /* BeSafeUITests */,
+				9CE9DDF5291983A0004163B2 /* SafeWay */,
+				9CE9DE0E291983A3004163B2 /* SafeWayTests */,
+				9CE9DE18291983A3004163B2 /* SafeWayUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -427,12 +427,12 @@
 /* Begin PBXTargetDependency section */
 		9CE9DE11291983A3004163B2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9CE9DDF5291983A0004163B2 /* BeSafe */;
+			target = 9CE9DDF5291983A0004163B2 /* SafeWay */;
 			targetProxy = 9CE9DE10291983A3004163B2 /* PBXContainerItemProxy */;
 		};
 		9CE9DE1B291983A3004163B2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9CE9DDF5291983A0004163B2 /* BeSafe */;
+			target = 9CE9DDF5291983A0004163B2 /* SafeWay */;
 			targetProxy = 9CE9DE1A291983A3004163B2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -645,7 +645,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BeSafe.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BeSafe";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SafeWay.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SafeWay";
 			};
 			name = Debug;
 		};
@@ -665,7 +665,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BeSafe.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BeSafe";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SafeWay.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SafeWay";
 			};
 			name = Release;
 		};
@@ -708,7 +708,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9CE9DDF1291983A0004163B2 /* Build configuration list for PBXProject "BeSafe" */ = {
+		9CE9DDF1291983A0004163B2 /* Build configuration list for PBXProject "SafeWay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9CE9DE21291983A3004163B2 /* Debug */,
@@ -717,7 +717,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9CE9DE23291983A3004163B2 /* Build configuration list for PBXNativeTarget "BeSafe" */ = {
+		9CE9DE23291983A3004163B2 /* Build configuration list for PBXNativeTarget "SafeWay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9CE9DE24291983A3004163B2 /* Debug */,
@@ -726,7 +726,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9CE9DE26291983A3004163B2 /* Build configuration list for PBXNativeTarget "BeSafeTests" */ = {
+		9CE9DE26291983A3004163B2 /* Build configuration list for PBXNativeTarget "SafeWayTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9CE9DE27291983A3004163B2 /* Debug */,
@@ -735,7 +735,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9CE9DE29291983A3004163B2 /* Build configuration list for PBXNativeTarget "BeSafeUITests" */ = {
+		9CE9DE29291983A3004163B2 /* Build configuration list for PBXNativeTarget "SafeWayUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9CE9DE2A291983A3004163B2 /* Debug */,
