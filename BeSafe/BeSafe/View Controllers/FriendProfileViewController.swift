@@ -15,6 +15,7 @@ class FriendProfileViewController: UIViewController {
     var isFollowed = Bool()
     let db = FirebaseFirestore.Firestore.firestore()
 
+    @IBOutlet weak var homeSafeLabel: UILabel!
     @IBOutlet var usernameLabel: UILabel!
     @IBOutlet var nameLabel: UILabel!
 
@@ -60,9 +61,12 @@ class FriendProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        Utilities.getDataFromUser(user: username) { data in
+
+        self.usernameLabel.text = self.username
+        Utilities.getDataFromUser(user: self.username){ data in
+
             self.nameLabel.text = data["first_name"] as? String
-            self.usernameLabel.text = self.username
+            
         }
 
         // Listener for document of selected user
@@ -86,10 +90,28 @@ class FriendProfileViewController: UIViewController {
                     self.toggleFollowButton.setTitle("Follow", for: .normal)
                     self.isFollowed = false
                 }
+
+
+            }
+            self.db.collection("users").document(self.username).addSnapshotListener { documentSnapshot, _ in
+                    if documentSnapshot?.get("markedHomeAt") as? Timestamp == nil {
+                        self.homeSafeLabel.text = "User has never marked home safe"
+                    }else{
+                        let homeTimeStamp = documentSnapshot?.get("markedHomeAt") as! Timestamp
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "HH:mm, dd/MM/yy"
+    
+                        let timestamp = homeTimeStamp.dateValue()
+    
+                        let dateString = dateFormatter.string(from: timestamp)
+                        self.homeSafeLabel.text = "home safe at \(dateString)"
+                    }
             }
         }
 
     }
+    
+
 
     /*
      // MARK: - Navigation

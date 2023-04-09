@@ -26,7 +26,7 @@ class PanicMessagesViewController: UIViewController, UITableViewDataSource {
         
         sharingUsers = Array(panicMessages.keys)
         let selectedUser = sharingUsers[indexPath.row]
-        print("selected user", selectedUser)
+
         cell.cellUser = panicMessages[selectedUser] as! [String : Any]
         cell.cellReloaded()
         return cell
@@ -37,6 +37,8 @@ class PanicMessagesViewController: UIViewController, UITableViewDataSource {
         panicMessagesTable.dataSource = self
         super.viewDidLoad()
         Utilities.getCurrentUserName { username in
+            let trimmedUser = username.trimmingCharacters(in: .whitespacesAndNewlines)
+
             Utilities.getPanicMessages(username: username){locationsShared in
                 self.panicMessages = locationsShared
                 self.panicMessagesTable.reloadData()

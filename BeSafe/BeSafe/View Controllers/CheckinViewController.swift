@@ -13,12 +13,13 @@ import UserNotifications
 class CheckinViewController: UIViewController, UITableViewDataSource {
     @IBOutlet var friendsTableView: UITableView!
 
-    @IBOutlet var checkInStatusLabel: UILabel!
     
     var sendingUsername = String()
 
     var followingList = [String]()
 
+    @IBOutlet weak var checkInButtonOutlet: UIButton!
+    
     let db = FirebaseFirestore.Firestore.firestore()
 
     let refreshControl = UIRefreshControl()
@@ -28,6 +29,7 @@ class CheckinViewController: UIViewController, UITableViewDataSource {
             Utilities.getFollowersList(forUser: username) { followersUsernames in
                 self.followingList = followersUsernames
                 self.friendsTableView.reloadData()
+
                 self.refreshControl.endRefreshing()
             }
         }
@@ -38,11 +40,23 @@ class CheckinViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         friendsTableView.refreshControl = refreshControl
+        
+        Utilities.doesCheckInRequestExist{ bool in
+
+            if !bool {
+                Utilities.unreadItemStatus(itemToSetImage: self.checkInButtonOutlet, read: true)
+                print("it shoudl be working")
+            }else {
+                Utilities.unreadItemStatus(itemToSetImage: self.checkInButtonOutlet, read: false)
+                print("this means it shoudl be showing full crrilc")
+            }
+        }
 
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
 
         friendsTableView.dataSource = self
         Utilities.getCurrentUserName() { username in
+            
             self.sendingUsername = username
             Utilities.getFollowersList(forUser: (username)) { followersUsernames in
                 self.followingList = followersUsernames
@@ -53,29 +67,25 @@ class CheckinViewController: UIViewController, UITableViewDataSource {
 
 
         friendsTableView.reloadData()
-//        listenForCheckInFlag()
+
     }
 
-//    func getFollowingData(){
-//
-//        db.collection("users").whereField("uid", isEqualTo: Auth.auth().currentUser?.uid).getDocuments { (querySnapshot, err) in
-//            if let err = err {
-//                print("Error getting documents: \(err)")
-//            } else {
-//                self.followingList = []
-//                for document in querySnapshot!.documents {
-//                    let data = document.data()
-//                    self.dataArray = data
-//                    self.followingList = data["following"] as! [String]
-//                    self.username = data["username"] as! String
-//                    self.friendsTableView.reloadData()
-//
-//                }
-//            }
-//        }
-//    }
+    func checkHomeSafe(recievingUsername: String, completion: @escaping (Bool) -> Void){
+        self.db.collection("users").document(recievingUsername).getDocument { documentSnapshot, error in
+            if documentSnapshot?.get("markedHomeAt") as? Timestamp == nil {
+                completion(false)
+            } else if let markedHomeAt = documentSnapshot?.get("markedHomeAt") as? Timestamp {
+                let currentTime = Timestamp(date: Date())
+                if currentTime.seconds > markedHomeAt.seconds + 10 {
+                    // More than 10 seconds have passed since markedHomeAt was set
+                    completion(false)
+                } else {completion(true)}
+            }
+            
+        }
+    }
 
-    // TABLE SET UP
+
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return followingList.count
@@ -84,37 +94,15 @@ class CheckinViewController: UIViewController, UITableViewDataSource {
     func tableView(_ friendsTableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = friendsTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CheckinTableViewCell
 
-        let db = Firestore.firestore()
-        let usersCollectionRef = db.collection("users")
-        let usernameDocRef = usersCollectionRef.document("username")
-        let checkInRequestsSentCollRef = usernameDocRef.collection("checkInRequestsSent")
-        let recievingUserDocRef = checkInRequestsSentCollRef.document("recievinguser")
-
-        recievingUserDocRef.addSnapshotListener { documentSnapshot, error in
-            guard let document = documentSnapshot else {
-                print("Error fetching document: \(error!)")
-                return
-            }
-            print("document data", document.data())
-            guard let checkedIn = document.data()?["checkedIn"] as? Bool else {
-                print("Checked in field not found in document")
-                return
-            }
-
-            // Handle checkedIn value here
-            if checkedIn {
-                print("User is checked in")
-            } else {
-                print("User is not checked in")
-            }
-        }
-
-        cell.textLabel?.text = followingList[indexPath.row]
+        cell.nameLabel.setTitle(followingList[indexPath.row], for: .disabled)
         cell.recievingUsername = followingList[indexPath.row]
 
+        checkHomeSafe(recievingUsername: followingList[indexPath.row]){markedHomeBool in
+            cell.isMarkedHome = markedHomeBool
+        }
+        print("this ran")
         
         cell.listenForCheckinFlag()
-8
         return cell
     }
 
@@ -123,8 +111,8 @@ class CheckinViewController: UIViewController, UITableViewDataSource {
             if let indexPath = friendsTableView.indexPathForSelectedRow {
                 let selectedUser = followingList[indexPath.row]
                 if let detailVC = segue.destination as? FriendProfileViewController {
-                    print("HERE", selectedUser)
                         detailVC.username = selectedUser
+                    
                     
                     
                 }

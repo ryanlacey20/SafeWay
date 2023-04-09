@@ -24,7 +24,7 @@ class PanicMessageMapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nameLabel.text = self.username
-        self.sentAtTimeLabel.text = timeSent
+        self.sentAtTimeLabel.text = "sent at: \(timeSent)"
         mapView.delegate = self
         mapView.showsUserLocation = true
         

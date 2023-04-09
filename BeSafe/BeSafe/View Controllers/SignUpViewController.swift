@@ -74,7 +74,7 @@ class SignUpViewController: UIViewController {
             let db = FirebaseFirestore.Firestore.firestore()
             let docRef = db.collection("users").document(username)
             docRef.getDocument { document, error in
-                print("document", document!.exists, username)
+
                 // checking if the username is taken (the username is used as the document name)
                 if (document!.exists){ self.showErrorMessage(message: "Username already exists")}  else {
                     // Create user once validated
@@ -105,6 +105,7 @@ class SignUpViewController: UIViewController {
                                     self.showErrorMessage(message: "User has been created, error saving first name and last name")
                                 } else {
                                     db.collection("users").document(username).collection("checkInRequestsSent").addDocument(data: [:])
+                                    db.collection("users").document(username).collection("checkInRequests").addDocument(data: [:])
                                     db.collection("users").document(username).collection("panicMessages").addDocument(data: [:]) { error in
                                         if let error = error {
                                             print("error creating collection panicMessages \(error)")

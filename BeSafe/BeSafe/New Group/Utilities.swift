@@ -82,10 +82,10 @@ class Utilities {
     }
 
     static func getDataFromUser(user: String, completion: @escaping ([String: Any]) -> Void) {
-        db.collection("users").document(user).getDocument { doc, _ in
-            if let data = doc?.data() {
-                completion(data)
-            }
+        let trimmedUser = user.trimmingCharacters(in: .whitespacesAndNewlines)
+        db.collection("users").document(trimmedUser).getDocument { docSnapshot, error in
+            let data = docSnapshot!.data()
+            completion(data!)
         }
     }
 
@@ -125,10 +125,9 @@ class Utilities {
     static func getPanicMessages(username: String, completion: @escaping ([String:Any]) -> Void){
         let databaseRef = Database.database(url: "https://besafe-fyp-default-rtdb.europe-west1.firebasedatabase.app").reference()
 
-        databaseRef.child("user_locations").observe(.value, with: { snapshot in
+        databaseRef.child("user_locations").queryOrdered(byChild: "sharedAt").observe(.value, with: { snapshot in
             guard let data = snapshot.value as? [String: Any] else { return }
 
-            
             let filteredData = data.filter { (nodeData) in
                 let data = nodeData.value as! [String: Any]
                 guard let sharedWithData = data["sharedWith"] as? Array<String> else {
@@ -136,9 +135,125 @@ class Utilities {
                     return false
                 }
                     return (sharedWithData.contains(username))
-                
+
             }
-            completion(filteredData)
+            if !filteredData.isEmpty{
+
+
+
+                let sortedDict = filteredData.sorted(by: {
+                    (($0.value as? [String: Any])?["sharedAt"] as? Double ?? 0) >
+                    (($1.value as? [String: Any])?["sharedAt"] as? Double ?? 0)
+                })
+
+                completion( Dictionary(uniqueKeysWithValues: sortedDict))
+            }
+
+            if filteredData.isEmpty{
+                completion(filteredData)
+            }
         })
     }
+
+
+    static func isPanicMessages(username: String, completion: @escaping (Any) -> Void){
+        let databaseRef = Database.database(url: "https://besafe-fyp-default-rtdb.europe-west1.firebasedatabase.app").reference()
+
+        databaseRef.child("user_locations").observe(.value, with: { snapshot in
+            guard let data = snapshot.value as? [String: Any] else { return }
+            
+            
+            let filteredData = data.filter { (nodeData) in
+                let data = nodeData.value as! [String: Any]
+                guard let sharedWithData = data["sharedWith"] as? Array<String> else {
+                    getPanicMessages(username: username, completion: completion)
+                    return false
+                }
+                return (sharedWithData.contains(username))
+                
+            }
+            if filteredData as? [String: String] == [:] {
+                completion(false)
+            }else {
+                completion(true)
+            }
+        })
+    }
+    
+    static func getCheckInRequestData(completion: @escaping ([String: Any]) -> Void) {
+         var requestsList = [String:Any]()
+         requestsList = [:]
+         self.getCurrentUserName { username in
+             db.collection("users").document(username).collection("checkInRequests").addSnapshotListener { querySnapshot, error in
+                 if error != nil{
+                     print("error in Utiltities.getCheckinRequests", error)
+                 } else {
+                     guard let listOfRequests = querySnapshot?.documents else {
+                         print("error in getCheckInRequests guard let statement")
+                         return
+                     }
+                     for request in listOfRequests {
+                         let requestData = request.data()
+                         requestsList[requestData["sender"] as! String] = requestData
+                         
+                     }
+                     completion(requestsList)
+                 }
+             }
+         }
+
+         }
+    
+//    static func doesCheckInRequestExist(completion: @escaping (Bool) -> Void){
+//        getCurrentUserName { username in
+//            db.collection("users").document(username).addSnapshotListener { docSanpshot, error in
+//                if (error != nil) {
+//                    print("error in doescheckinrequestsexits")
+//                }else{
+//                    db.collection("users").document(username).collection("checkInRequests").getDocuments { querySnapshot, error in
+//                        if querySnapshot!.isEmpty{
+//                            completion(false)
+//                        }else{
+//                            completion(true)
+//                        }
+//                    }
+//                }
+//            }
+//        }
+    static func doesCheckInRequestExist( completion: @escaping (Bool) -> Void) {
+        getCurrentUserName { username in
+            let db = Firestore.firestore()
+            let userDocRef = db.collection("users").document(username)
+
+            userDocRef.collection("checkInRequests").addSnapshotListener { (snapshot, error) in
+                if error != nil {
+                    print("Error fetching subcollection: \(error!)")
+                    completion(false)
+                    return
+                }
+
+                if snapshot?.isEmpty == true {
+                    // The subcollection does not exist
+                    completion(false)
+                } else {
+                    // The subcollection exists
+                    completion(true)
+                }
+            }
+        }
+    
+
+        
+    }
+    
+    static func unreadItemStatus(itemToSetImage: UIButton, read: Bool){
+        if !read{
+            itemToSetImage.setImage(UIImage(systemName: "circlebadge.fill")?.withTintColor(UIColor.red), for: .normal)
+        }else{
+            itemToSetImage.setImage(UIImage(systemName: "circlebadge")?.withTintColor(UIColor.red), for: .normal)
+            
+        }
+    }
+
+    
 }

@@ -21,6 +21,7 @@ class CheckInRequestsTableViewCell: UITableViewCell {
     weak var delegate: CheckInRequestsTableViewCellDelegate?
 
     @IBAction func checkInAsSafeButton(_: Any) {
+        
         delegate?.checkInButtonTapped(senderUsername: senderUsername)
     }
 
