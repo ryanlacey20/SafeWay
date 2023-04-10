@@ -13,7 +13,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="SignUpViewController" customModule="BeSafe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SignUpViewController" customModule="SafeWay" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,6 +23,9 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Registration" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v54-b2-Eaa">
                                         <rect key="frame" x="0.0" y="0.0" width="313" height="40"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="SYJ-VE-MwM"/>
                                         </constraints>
@@ -32,6 +35,7 @@
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tll-I3-C0E">
                                         <rect key="frame" x="0.0" y="50" width="313" height="40"/>
+                                        <accessibility key="accessibilityConfiguration" hint="type your name, do not use numbers" label="first name text field"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="uWW-an-qTZ"/>
                                         </constraints>
@@ -40,37 +44,48 @@
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="253" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Surname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j23-qd-6tB">
                                         <rect key="frame" x="0.0" y="100" width="313" height="34"/>
+                                        <accessibility key="accessibilityConfiguration" hint="type your last name, do not use numbers" label="last name text field"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7ZE-e7-mVO">
                                         <rect key="frame" x="0.0" y="144" width="313" height="34"/>
+                                        <accessibility key="accessibilityConfiguration" label="email text field"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AFW-BH-yCn">
                                         <rect key="frame" x="0.0" y="188" width="313" height="34"/>
+                                        <accessibility key="accessibilityConfiguration" hint="username must be unique and may not contain spaces" label="username text field"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rfM-h2-57N">
                                         <rect key="frame" x="0.0" y="232" width="313" height="34"/>
+                                        <accessibility key="accessibilityConfiguration" hint="password must be 8 charecters and contain a number and special charecter" label="password text field"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=" Confirm Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ABZ-18-mRG">
                                         <rect key="frame" x="0.0" y="276" width="313" height="34"/>
+                                        <accessibility key="accessibilityConfiguration" label="confirm password text field"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="256" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="18" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmZ-S0-kFb">
                                         <rect key="frame" x="0.0" y="320" width="313" height="20.333333333333314"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                        </accessibility>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" systemColor="systemRedColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXR-IF-hrg">
                                         <rect key="frame" x="0.0" y="350.33333333333331" width="313" height="40"/>
+                                        <accessibility key="accessibilityConfiguration" hint="press to submit registration form" label="sign up button">
+                                            <accessibilityTraits key="traits" button="YES" causesPageTurn="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="xUy-Pu-gI2"/>
                                         </constraints>
@@ -109,7 +124,7 @@
         <!--Login View Controller-->
         <scene sceneID="d6P-Lb-mUH">
             <objects>
-                <viewController id="jxk-oo-Z2u" customClass="LoginViewController" customModule="BeSafe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="jxk-oo-Z2u" customClass="LoginViewController" customModule="SafeWay" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e8n-Oe-9ed">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -119,6 +134,9 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cac-fA-xvT">
                                         <rect key="frame" x="0.0" y="0.0" width="313" height="40"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="f38-18-zhE"/>
                                         </constraints>
@@ -128,16 +146,21 @@
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sm6-9h-1Sm">
                                         <rect key="frame" x="0.0" y="60" width="313" height="40"/>
+                                        <accessibility key="accessibilityConfiguration" hint="enter email associated to accounts" label="email field"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EFP-k5-NsC">
                                         <rect key="frame" x="0.0" y="120" width="313" height="40"/>
+                                        <accessibility key="accessibilityConfiguration" hint="enter password associated with account" label="password field"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCs-7W-8Jy">
                                         <rect key="frame" x="0.0" y="180" width="313" height="40"/>
+                                        <accessibility key="accessibilityConfiguration" hint="press to submit login form" label="login button">
+                                            <accessibilityTraits key="traits" button="YES" causesPageTurn="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="aPv-9s-a1q"/>
                                         </constraints>
@@ -185,7 +208,7 @@
         <!--Greeting View Controller-->
         <scene sceneID="5hC-Tx-gKo">
             <objects>
-                <viewController storyboardIdentifier="GreetingViewController" id="aT7-Bw-kVS" customClass="GreetingViewController" customModule="BeSafe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GreetingViewController" id="aT7-Bw-kVS" customClass="GreetingViewController" customModule="SafeWay" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0qp-KQ-D73">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -195,6 +218,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ajj-8X-PIe">
                                         <rect key="frame" x="0.0" y="0.0" width="313" height="64"/>
+                                        <accessibility key="accessibilityConfiguration" hint="Press this button to login" label="Login button"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Login"/>
                                         <connections>
@@ -206,6 +230,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89J-1w-nn9">
                                         <rect key="frame" x="0.0" y="84" width="313" height="64"/>
+                                        <accessibility key="accessibilityConfiguration" hint="press this button to sign up" label="sign up butotn"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Sign Up"/>
                                         <connections>
@@ -221,6 +246,10 @@
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SafeWay" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3DA-90-Tah">
                                 <rect key="frame" x="50" y="99" width="293" height="70.666666666666686"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                    <bool key="isElement" value="NO"/>
+                                </accessibility>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="59"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -265,19 +294,25 @@
         <!--Home-->
         <scene sceneID="jCW-ew-KJz">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" title="Home" id="Ryd-ZO-wK0" customClass="HomeViewController" customModule="BeSafe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" title="Home" id="Ryd-ZO-wK0" customClass="HomeViewController" customModule="SafeWay" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y4b-m9-e6r">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SafeWay" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4A-IX-WZh">
                                 <rect key="frame" x="20" y="123" width="119" height="32"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <bool key="isElement" value="NO"/>
+                                </accessibility>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OaL-1s-WVU">
                                 <rect key="frame" x="20" y="175" width="84.666666666666671" height="34"/>
+                                <accessibility key="accessibilityConfiguration" label="Logout button">
+                                    <accessibilityTraits key="traits" button="YES" causesPageTurn="YES"/>
+                                </accessibility>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Log Out"/>
                                 <connections>
@@ -286,12 +321,16 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="1" text="" textAlignment="right" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yiu-de-tfk">
                                 <rect key="frame" x="159" y="123" width="214" height="32"/>
+                                <accessibility key="accessibilityConfiguration" label="Your username">
+                                    <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                </accessibility>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5YT-De-Eaa">
                                 <rect key="frame" x="96" y="365" width="201" height="200"/>
+                                <accessibility key="accessibilityConfiguration" hint="send red alert message to sos contacts" label="Red alert panic button"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="NIX-r1-3tN"/>
                                 </constraints>
@@ -303,6 +342,9 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nto-ig-iry">
                                 <rect key="frame" x="246" y="175" width="147" height="34.333333333333343"/>
+                                <accessibility key="accessibilityConfiguration" label="Panic messages inbox button">
+                                    <accessibilityTraits key="traits" button="YES" causesPageTurn="YES"/>
+                                </accessibility>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Panic Messages"/>
                                 <connections>
@@ -317,6 +359,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ANC-eI-Kop">
                                 <rect key="frame" x="100" y="259" width="193" height="60"/>
+                                <accessibility key="accessibilityConfiguration" hint="press to mark home as safe" label="mark as home safe"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="J3g-bo-MIU"/>
                                 </constraints>
@@ -331,6 +374,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gj8-O0-Ly0">
                                 <rect key="frame" x="100" y="605" width="193" height="100"/>
+                                <accessibility key="accessibilityConfiguration" hint="press to send an amber panic message to sos contacts" label="amber panic button"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="xPA-We-WE1"/>
                                 </constraints>
@@ -408,7 +452,7 @@
         <!--Panic Messages View Controller-->
         <scene sceneID="Ccu-8i-OL4">
             <objects>
-                <viewController id="FWd-p2-NcO" customClass="PanicMessagesViewController" customModule="BeSafe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="FWd-p2-NcO" customClass="PanicMessagesViewController" customModule="SafeWay" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tRy-zL-dc8">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -417,7 +461,7 @@
                                 <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PanicMessageCell" rowHeight="117" id="0e4-X5-F2P" customClass="PanicMessagesTableViewCell" customModule="BeSafe" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PanicMessageCell" rowHeight="117" id="0e4-X5-F2P" customClass="PanicMessagesTableViewCell" customModule="SafeWay" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="117"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0e4-X5-F2P" id="xYG-Zw-WD8">
@@ -426,18 +470,27 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAh-Rb-MHK">
                                                     <rect key="frame" x="20" y="85" width="343" height="21"/>
+                                                    <accessibility key="accessibilityConfiguration" label="panic message sent at">
+                                                        <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                                    </accessibility>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7g-Qk-VQ4">
                                                     <rect key="frame" x="261" y="46" width="42" height="21"/>
+                                                    <accessibility key="accessibilityConfiguration" label="the status of the panic mesage">
+                                                        <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                                    </accessibility>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rF3-Ef-GRo">
                                                     <rect key="frame" x="20.000000000000004" y="16" width="44.333333333333343" height="21"/>
+                                                    <accessibility key="accessibilityConfiguration" label="panic message sent by">
+                                                        <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                                    </accessibility>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -485,13 +538,16 @@
         <!--Panic Message Map View Controller-->
         <scene sceneID="NFa-yb-LNC">
             <objects>
-                <viewController id="Iok-Ls-jHu" customClass="PanicMessageMapViewController" customModule="BeSafe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Iok-Ls-jHu" customClass="PanicMessageMapViewController" customModule="SafeWay" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cQ3-1I-HSz">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGP-BV-Sxf">
                                 <rect key="frame" x="50" y="84" width="53.666666666666657" height="25.333333333333329"/>
+                                <accessibility key="accessibilityConfiguration" label="name of sender">
+                                    <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                </accessibility>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -502,6 +558,9 @@
                             </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0m6-We-AcO">
                                 <rect key="frame" x="50" y="142.33333333333334" width="333" height="22"/>
+                                <accessibility key="accessibilityConfiguration" label="panic message sent at">
+                                    <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                </accessibility>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -535,7 +594,7 @@
         <!--Checkin View Controller-->
         <scene sceneID="qXb-kS-kqY">
             <objects>
-                <viewController id="Ahh-b7-IRk" customClass="CheckinViewController" customModule="BeSafe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ahh-b7-IRk" customClass="CheckinViewController" customModule="SafeWay" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VES-pt-cg5">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -544,7 +603,7 @@
                                 <rect key="frame" x="0.0" y="139.33333333333331" width="393" height="629.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="106" id="84T-ff-uV0" customClass="CheckinTableViewCell" customModule="BeSafe" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="106" id="84T-ff-uV0" customClass="CheckinTableViewCell" customModule="SafeWay" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="106"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="84T-ff-uV0" id="Scx-Ip-6do">
@@ -553,6 +612,7 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FSO-25-IrN">
                                                     <rect key="frame" x="300" y="4" width="93" height="35"/>
+                                                    <accessibility key="accessibilityConfiguration" hint="press to send a check in request to this user" label="check in request button"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="tinted" title="Check-In"/>
                                                     <connections>
@@ -561,12 +621,16 @@
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="checkInStatusLabel" text="Check in Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZq-Ti-mgH">
                                                     <rect key="frame" x="15" y="60" width="353" height="37"/>
+                                                    <accessibility key="accessibilityConfiguration" label="user checked in at "/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" enabled="NO" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dV-vZ-8Jk">
-                                                    <rect key="frame" x="15" y="4.3333333333333286" width="275" height="34.333333333333343"/>
+                                                    <rect key="frame" x="15" y="4.3333333333333321" width="275" height="34.333333333333343"/>
+                                                    <accessibility key="accessibilityConfiguration" label="Name of followed user">
+                                                        <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                                    </accessibility>
                                                     <color key="tintColor" systemColor="labelColor"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="zxczx" titleAlignment="leading"/>
@@ -584,6 +648,10 @@
                                                 <constraint firstItem="FSO-25-IrN" firstAttribute="leading" secondItem="6dV-vZ-8Jk" secondAttribute="trailing" priority="992" constant="10" id="jmV-8T-yya"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" hint="press to view the profile of the followed user" label="Cell of followed user ">
+                                            <accessibilityTraits key="traits" causesPageTurn="YES"/>
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <connections>
                                             <outlet property="checkInButton" destination="FSO-25-IrN" id="wuu-ZE-PfS"/>
                                             <outlet property="checkInStatusLabel" destination="hZq-Ti-mgH" id="KI2-Gq-jZ1"/>
@@ -595,6 +663,9 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqd-fR-TRh">
                                 <rect key="frame" x="298" y="103" width="95" height="34.333333333333343"/>
+                                <accessibility key="accessibilityConfiguration" label="check in requests recieved inbox">
+                                    <accessibilityTraits key="traits" button="YES" causesPageTurn="YES"/>
+                                </accessibility>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Requests"/>
                                 <connections>
@@ -603,6 +674,9 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Following" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y32-Ve-LHy">
                                 <rect key="frame" x="10" y="103" width="112" height="36.333333333333343"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                </accessibility>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -635,7 +709,7 @@
         <!--Friend Profile View Controller-->
         <scene sceneID="qrh-dD-M2S">
             <objects>
-                <viewController id="nnl-ch-Pa6" customClass="FriendProfileViewController" customModule="BeSafe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nnl-ch-Pa6" customClass="FriendProfileViewController" customModule="SafeWay" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ISI-DH-lv1">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -707,7 +781,7 @@
         <!--Check-in Requests-->
         <scene sceneID="0gU-a2-7gs">
             <objects>
-                <viewController title="Check-in Requests" id="6Yg-Tt-Iu0" customClass="CheckInRequestsViewController" customModule="BeSafe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Check-in Requests" id="6Yg-Tt-Iu0" customClass="CheckInRequestsViewController" customModule="SafeWay" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v8t-kY-CWO">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -716,7 +790,7 @@
                                 <rect key="frame" x="0.0" y="138" width="393" height="631"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RequestsCell" rowHeight="100" id="5ON-ku-roY" customClass="CheckInRequestsTableViewCell" customModule="BeSafe" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RequestsCell" rowHeight="100" id="5ON-ku-roY" customClass="CheckInRequestsTableViewCell" customModule="SafeWay" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5ON-ku-roY" id="m12-hB-aBz">
@@ -756,6 +830,7 @@ VGltZSBSZXF1ZXN0ZWQQOg
                                                 <constraint firstItem="Esx-OE-5at" firstAttribute="leading" secondItem="m12-hB-aBz" secondAttribute="leadingMargin" constant="10" id="k7d-sI-PQe"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" label="Cell of followed use"/>
                                         <connections>
                                             <outlet property="senderLabel" destination="aMy-rA-a4M" id="UYB-H7-gND"/>
                                             <outlet property="timeRequestedLabel" destination="Esx-OE-5at" id="X1F-UB-451"/>
@@ -802,13 +877,16 @@ VGltZSBSZXF1ZXN0ZWQQOg
         <!--Add Friends View Controller-->
         <scene sceneID="lvj-EG-Ug9">
             <objects>
-                <viewController id="dDU-fk-hZC" customClass="AddFriendsViewController" customModule="BeSafe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dDU-fk-hZC" customClass="AddFriendsViewController" customModule="SafeWay" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Lx-aF-N1D">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LR4-Lq-ccm">
                                 <rect key="frame" x="5" y="133" width="383" height="50"/>
+                                <accessibility key="accessibilityConfiguration" hint="enter usenrame of user you wish to follow" label="username search bar">
+                                    <accessibilityTraits key="traits" searchField="YES"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="jDp-jr-sjc"/>
                                 </constraints>
@@ -832,6 +910,7 @@ VGltZSBSZXF1ZXN0ZWQQOg
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nLi-yh-MPC">
                                 <rect key="frame" x="80" y="283" width="75" height="35"/>
+                                <accessibility key="accessibilityConfiguration" hint="press here to follow user once searched" label="Follow button"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                 <connections>
@@ -840,6 +919,9 @@ VGltZSBSZXF1ZXN0ZWQQOg
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find Users" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uvV-yJ-qqi">
                                 <rect key="frame" x="4.9999999999999929" y="103" width="123.33333333333331" height="30"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                </accessibility>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -873,44 +955,6 @@ VGltZSBSZXF1ZXN0ZWQQOg
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tqN-p6-hcb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5912" y="473"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="w7W-lo-io5">
-            <objects>
-                <viewController id="oO7-4Q-eSq" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="eES-3j-Ip0">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bbA-4x-9TU">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="O6t-If-R3w">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="O6t-If-R3w" id="YA9-0v-pcD">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="iyl-UF-C9X"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="iyl-UF-C9X" firstAttribute="trailing" secondItem="bbA-4x-9TU" secondAttribute="trailing" id="B4c-dM-I4N"/>
-                            <constraint firstItem="bbA-4x-9TU" firstAttribute="leading" secondItem="iyl-UF-C9X" secondAttribute="leading" id="Kd1-hC-hAI"/>
-                            <constraint firstItem="iyl-UF-C9X" firstAttribute="bottom" secondItem="bbA-4x-9TU" secondAttribute="bottom" id="oNs-9e-dQu"/>
-                            <constraint firstItem="bbA-4x-9TU" firstAttribute="top" secondItem="iyl-UF-C9X" secondAttribute="top" id="y07-F4-rj5"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="t6l-tl-0x2"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="g8A-Xc-Pyw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6960" y="473"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ws3-EY-9yU">
